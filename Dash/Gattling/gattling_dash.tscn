@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbnby5q2ppssy"]
+[gd_scene load_steps=12 format=3 uid="uid://dbnby5q2ppssy"]
 
 [ext_resource type="Script" path="res://Dash/Gattling/gattling_dash.gd" id="1_xmyv1"]
 [ext_resource type="Texture2D" uid="uid://bir544vycly7v" path="res://Dash/Gun/dash.png" id="2_yyswu"]
 [ext_resource type="Texture2D" uid="uid://djhcfthuoqjh3" path="res://Dash/Freeze/freeze_decal.png" id="3_0ldsa"]
 [ext_resource type="StyleBox" uid="uid://b242qfk3kgvdj" path="res://Dash/Freeze/button.tres" id="4_l7nvo"]
 [ext_resource type="Texture2D" uid="uid://c6t5n77ctt00x" path="res://Dash/Freeze/freezebutton.png" id="5_h8l6y"]
+[ext_resource type="Texture2D" uid="uid://cir2n0u7j2twi" path="res://Dash/Gattling/meter.png" id="6_nhowh"]
+[ext_resource type="Script" path="res://Dash/Gattling/meter.gd" id="7_q21ga"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7wv62"]
 atlas = ExtResource("5_h8l6y")
@@ -47,3 +49,21 @@ theme_override_styles/hover = ExtResource("4_l7nvo")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_038qe")
 theme_override_styles/normal = SubResource("StyleBoxTexture_kb0ng")
 metadata/_edit_use_anchors_ = true
+
+[node name="Meter" type="Node2D" parent="dash"]
+position = Vector2(183, 127.413)
+rotation = 2.26893
+script = ExtResource("7_q21ga")
+
+[node name="Sprite" type="Sprite2D" parent="dash/Meter"]
+rotation = -2.26893
+texture = ExtResource("6_nhowh")
+
+[node name="Pin" type="ColorRect" parent="dash/Meter"]
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 12.0
+offset_bottom = 1.0
+rotation = 4.88692
+pivot_offset = Vector2(1, 1)
+color = Color(0.47, 0.0752, 0.0817799, 1)
