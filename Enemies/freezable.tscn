@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c41kwdyitvr7p"]
+
+[ext_resource type="Script" path="res://Enemies/cherry/freeze_component.gd" id="1_44t3l"]
+
+[node name="Freezable" type="Node"]
+script = ExtResource("1_44t3l")
+freezecolor = Color(0.122313, 0.358631, 1, 1)
+enemy_path = NodePath("..")
+sprite_path = NodePath("../AnimatedSprite2D")

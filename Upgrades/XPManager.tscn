@@ -48,5 +48,6 @@ desc = "Freezing"
 script = ExtResource("8_dcbo8")
 weapon = ExtResource("11_rwuqn")
 dash = ExtResource("12_4e2la")
+desc = "Gattling Gun"
 
 [connection signal="timeout" from="LevelUpTimer" to="." method="level_up"]
