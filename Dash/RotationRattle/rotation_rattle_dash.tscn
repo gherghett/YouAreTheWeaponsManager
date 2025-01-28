@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4igiyjtxi7in"]
+
+[ext_resource type="Texture2D" uid="uid://bir544vycly7v" path="res://Dash/Gun/dash.png" id="1_1a765"]
+[ext_resource type="Script" path="res://Dash/RotationRattle/rotation_rattle_dash.gd" id="1_2hxll"]
+[ext_resource type="PackedScene" uid="uid://dqkv257hsjlhn" path="res://Dash/RotationRattle/knob.tscn" id="3_5rgt8"]
+
+[node name="RotationRattleDash" type="Node2D"]
+script = ExtResource("1_2hxll")
+
+[node name="dash" type="Sprite2D" parent="."]
+position = Vector2(0, 22)
+scale = Vector2(1, 1.036)
+texture = ExtResource("1_1a765")
+centered = false
+
+[node name="Burst_knob" parent="dash" instance=ExtResource("3_5rgt8")]
+position = Vector2(213, 128.378)
+
+[node name="Rotation_Knob" parent="dash" instance=ExtResource("3_5rgt8")]
+position = Vector2(73, 128.378)

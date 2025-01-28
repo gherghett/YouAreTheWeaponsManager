@@ -1,0 +1,269 @@
+[gd_scene load_steps=21 format=3 uid="uid://b21qc4qojf82l"]
+
+[ext_resource type="Script" path="res://Enemies/head/head.gd" id="1_m8ucn"]
+[ext_resource type="Texture2D" uid="uid://ia5nq43wk2qm" path="res://Enemies/head/head.png" id="2_nyprp"]
+[ext_resource type="Texture2D" uid="uid://bgormwj5kytxy" path="res://Tank/Freeze/snowflake.png" id="3_ixmmn"]
+[ext_resource type="AudioStream" uid="uid://bc5npdk3muoa0" path="res://Enemies/head/loading_laser.mp3" id="4_radav"]
+[ext_resource type="AudioStream" uid="uid://dp8ioc6ao675c" path="res://Enemies/head/zapsplat_multimedia_game_sound_retro_arcade_lo_fi_science_fiction_weapon_laser_harsh_107624.mp3" id="5_4we8q"]
+[ext_resource type="PackedScene" uid="uid://dt0o0yxrt0rkl" path="res://blink_on_damage.tscn" id="6_qvav5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1wxl"]
+atlas = ExtResource("2_nyprp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atvh2"]
+atlas = ExtResource("2_nyprp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_um1gg"]
+atlas = ExtResource("2_nyprp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04kc4"]
+atlas = ExtResource("2_nyprp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ow67"]
+atlas = ExtResource("2_nyprp")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqf5h"]
+atlas = ExtResource("2_nyprp")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fayal"]
+atlas = ExtResource("2_nyprp")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqeg5"]
+atlas = ExtResource("2_nyprp")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08t5l"]
+atlas = ExtResource("2_nyprp")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxkvf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1wxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atvh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_um1gg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04kc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ow67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqf5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fayal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqeg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08t5l")
+}],
+"loop": false,
+"name": &"awake",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q57o4"]
+size = Vector2(30, 34)
+
+[sub_resource type="Animation" id="Animation_fqy8v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rightEye:width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9.54545]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rightEye2:width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.0]
+}
+
+[sub_resource type="Animation" id="Animation_eev5t"]
+resource_name = "aaaaa"
+length = 4.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.53333, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"eyes_on_tank"
+}, {
+"args": [],
+"method": &"fire"
+}, {
+"args": [],
+"method": &"close_eyes"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rightEye:width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.6, 1.66667, 2.03333, 2.4, 2.86667, 3.16667, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [10.0, 9.54545, 15.0, 9.54545, 10.0, 9.54545, 10.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rightEye2:width")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.56667, 1.66667, 2, 2.4333, 2.66667, 3.16667, 3.23333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [5.0, 10.0, 5.0, 15.0, 5.0, 10.0, 5.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LoadingLaserSound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LaserSound")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5, 3.33333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k85pf"]
+_data = {
+"RESET": SubResource("Animation_fqy8v"),
+"aaaaa": SubResource("Animation_eev5t")
+}
+
+[node name="Head" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_m8ucn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_uxkvf")
+animation = &"awake"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_q57o4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k85pf")
+}
+
+[node name="rightEye" type="Line2D" parent="."]
+visible = false
+texture_repeat = 2
+position = Vector2(9, -9)
+points = PackedVector2Array(-3, -7, -22, 17)
+width = 9.54545
+default_color = Color(1, 1, 0.431373, 1)
+texture = ExtResource("3_ixmmn")
+texture_mode = 1
+
+[node name="rightEye2" type="Line2D" parent="."]
+visible = false
+texture_repeat = 2
+position = Vector2(-5, -9)
+points = PackedVector2Array(-3, -7, -22, 17)
+width = 5.0
+default_color = Color(1, 1, 0.431373, 1)
+texture = ExtResource("3_ixmmn")
+texture_mode = 1
+
+[node name="rightEye_laser" type="Line2D" parent="."]
+visible = false
+texture_repeat = 2
+position = Vector2(6, -9)
+points = PackedVector2Array(-3, -7, -22, 17)
+width = 2.0
+default_color = Color(1, 0.0745098, 0.431373, 0.490196)
+texture = ExtResource("3_ixmmn")
+texture_mode = 1
+
+[node name="rightEye_laser2" type="Line2D" parent="."]
+visible = false
+texture_repeat = 2
+position = Vector2(-5, -8)
+points = PackedVector2Array(-3, -7, -22, 17)
+width = 2.0
+default_color = Color(1, 0.0745098, 0.431373, 0.490196)
+texture = ExtResource("3_ixmmn")
+texture_mode = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="LoadingLaserSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_radav")
+volume_db = -15.0
+
+[node name="LaserSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_4we8q")
+volume_db = -12.0
+
+[node name="BlinkOnDamage" parent="." instance=ExtResource("6_qvav5")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

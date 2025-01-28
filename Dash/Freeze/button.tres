@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://b242qfk3kgvdj"]
+
+[ext_resource type="Texture2D" uid="uid://c24lra8koht0k" path="res://Dash/Freeze/new_atlas_texture.tres" id="1_dahvx"]
+
+[resource]
+texture = ExtResource("1_dahvx")

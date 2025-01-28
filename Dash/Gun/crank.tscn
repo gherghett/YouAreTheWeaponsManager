@@ -1,0 +1,117 @@
+[gd_scene load_steps=14 format=3 uid="uid://ot323fald5l2"]
+
+[ext_resource type="Script" path="res://Dash/Gun/crank.gd" id="1_33cox"]
+[ext_resource type="AudioStream" uid="uid://cfcylpxv5e7w6" path="res://Dash/Gun/Crank_groan.mp3" id="2_6x1s4"]
+[ext_resource type="Texture2D" uid="uid://cfivba4ngpb6c" path="res://Dash/Gun/crank_mask.png" id="2_nanp7"]
+[ext_resource type="Texture2D" uid="uid://b28vo6tulwope" path="res://Dash/Gun/crank_drop_shadow.png" id="2_vn0kb"]
+[ext_resource type="Script" path="res://Dash/Gun/crank_mask.gd" id="3_kns6m"]
+[ext_resource type="Texture2D" uid="uid://baa0uyd658y45" path="res://Dash/Gun/metal.png" id="4_egb14"]
+[ext_resource type="Script" path="res://Dash/Gun/crank_rotation_2.gd" id="4_rb1qy"]
+[ext_resource type="Texture2D" uid="uid://ergdqpk27ce8" path="res://Dash/Gun/crank_shadowl.png" id="6_yp6o7"]
+[ext_resource type="Texture2D" uid="uid://bufr4lvpuqbun" path="res://Dash/Gun/crank_middle.png" id="7_f57ve"]
+[ext_resource type="Texture2D" uid="uid://dr1ldeqnqgncx" path="res://Dash/Gun/handle.png" id="9_vobjg"]
+[ext_resource type="Texture2D" uid="uid://rg8pbh4e0oa3" path="res://Dash/Gun/handle_shadow.png" id="9_xfkma"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kncsp"]
+radius = 60.69
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_clqhg"]
+
+[node name="Crank" type="Area2D"]
+texture_filter = 1
+position = Vector2(111, 556)
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_33cox")
+
+[node name="CrankGroan" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6x1s4")
+volume_db = -11.244
+
+[node name="srop_shadow" type="Sprite2D" parent="."]
+position = Vector2(-15, 10)
+scale = Vector2(2, 2)
+texture = ExtResource("2_vn0kb")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="srop_shadow"]
+remote_path = NodePath("../../CrankShadowRotation")
+
+[node name="CrankShadowRotation" type="Node2D" parent="."]
+position = Vector2(-15, 10)
+scale = Vector2(2, 2)
+script = ExtResource("3_kns6m")
+
+[node name="handle shadow2" type="Sprite2D" parent="CrankShadowRotation"]
+modulate = Color(1, 1, 1, 0.823529)
+position = Vector2(28.3333, 2.03848e-05)
+texture = ExtResource("9_xfkma")
+offset = Vector2(-4, 5)
+
+[node name="Mask" type="Sprite2D" parent="."]
+clip_children = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_nanp7")
+
+[node name="CrankRotation" type="Node2D" parent="Mask"]
+script = ExtResource("4_rb1qy")
+
+[node name="Sprite2D" type="Sprite2D" parent="Mask/CrankRotation"]
+texture = ExtResource("4_egb14")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Mask/CrankRotation"]
+remote_path = NodePath("../../../CrankRotation")
+
+[node name="handle shadow" type="Sprite2D" parent="Mask/CrankRotation"]
+modulate = Color(1, 1, 1, 0.823529)
+position = Vector2(26.6667, -3.33333)
+texture = ExtResource("9_xfkma")
+offset = Vector2(-4, 5)
+
+[node name="inner_shadow" type="Sprite2D" parent="Mask"]
+modulate = Color(1, 1, 1, 0.47451)
+texture = ExtResource("6_yp6o7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -43.0
+offset_top = -44.0
+offset_right = 45.0
+offset_bottom = 43.0
+color = Color(0, 0.985989, 0.988652, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_kncsp")
+
+[node name="middle" type="Sprite2D" parent="."]
+clip_children = 2
+material = SubResource("ShaderMaterial_clqhg")
+position = Vector2(1, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("7_f57ve")
+script = ExtResource("3_kns6m")
+
+[node name="handle shadow2" type="Sprite2D" parent="middle"]
+position = Vector2(26.1667, -1.66667)
+texture = ExtResource("9_xfkma")
+offset = Vector2(-4, 5)
+
+[node name="CrankRotation" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+script = ExtResource("3_kns6m")
+
+[node name="handle shadow" type="Sprite2D" parent="CrankRotation"]
+visible = false
+modulate = Color(1, 1, 1, 0.823529)
+position = Vector2(18.3333, 6.66667)
+texture = ExtResource("9_xfkma")
+offset = Vector2(-4, 5)
+
+[node name="handle3" type="Sprite2D" parent="CrankRotation"]
+position = Vector2(26.6667, -1.66662)
+texture = ExtResource("9_vobjg")
+offset = Vector2(0, -10)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

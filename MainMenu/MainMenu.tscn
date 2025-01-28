@@ -1,0 +1,140 @@
+[gd_scene load_steps=14 format=3 uid="uid://cn8ogm8pv3y3i"]
+
+[ext_resource type="Script" path="res://MainMenu/main_menu.gd" id="1_wvtpv"]
+[ext_resource type="Shader" path="res://MainMenu/hyper.gdshader" id="2_l6yyb"]
+[ext_resource type="Shader" path="res://MainMenu/MainMenuBg.gdshader" id="2_p8csw"]
+[ext_resource type="PackedScene" uid="uid://bgexubhu8mcty" path="res://Tank/tank.tscn" id="2_u2kgr"]
+[ext_resource type="PackedScene" uid="uid://ipnc6f3h5cla" path="res://Tank/Gun/gun.tscn" id="3_ftksw"]
+[ext_resource type="Theme" uid="uid://cxn2lc75ns7uc" path="res://main.tres" id="3_v4p4v"]
+[ext_resource type="Texture2D" uid="uid://cjpkvtjwlyl6d" path="res://pattern.png" id="4_ja14l"]
+[ext_resource type="AudioStream" uid="uid://xosfhysdibqx" path="res://MainMenu/menu_2.mp3" id="5_ssvnr"]
+[ext_resource type="Texture2D" uid="uid://dl0sdxwadrb1a" path="res://desert.png" id="7_mhyp3"]
+[ext_resource type="Shader" path="res://MainMenu/square_swirl.gdshader" id="8_jh81s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_evrrw"]
+shader = ExtResource("2_l6yyb")
+shader_parameter/enabled = true
+shader_parameter/low = 0.0
+shader_parameter/high = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1boy7"]
+shader = ExtResource("8_jh81s")
+shader_parameter/scroll_speed = 0.005
+shader_parameter/angle_degrees = 45.645
+shader_parameter/repeat_x = 7.0
+shader_parameter/repeat_y = 4.0
+shader_parameter/row_offset = 0.4
+shader_parameter/time = 0.0
+shader_parameter/brightness_cutoff = 0.5
+shader_parameter/alpha_of_darkness = 1.0
+shader_parameter/bottom_right_darkness = 3.5
+shader_parameter/contrast_intensity = 3.655
+shader_parameter/texture_to_scroll = ExtResource("4_ja14l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bfmn0"]
+shader = ExtResource("2_p8csw")
+shader_parameter/spin_rotation_speed = 0.5
+shader_parameter/move_speed = 2.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.870588, 0.0588235, 0.0627451, 0.196078)
+shader_parameter/colour_2 = Color(0.498039, 0.882353, 0.921569, 1)
+shader_parameter/colour_3 = Color(0.259775, 0.240108, 0.131096, 1)
+shader_parameter/contrast = 1.0
+shader_parameter/lighting = 0.4
+shader_parameter/spin_amount = 0.1
+shader_parameter/pixel_filter = 740.0
+shader_parameter/time = 0.0
+shader_parameter/is_rotating = true
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_wvtpv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Starfield" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_evrrw")
+offset_right = 288.0
+offset_bottom = 164.0
+color = Color(0.231373, 0.203922, 1, 1)
+
+[node name="SquareSwirl" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_1boy7")
+offset_right = 288.0
+offset_bottom = 165.0
+color = Color(1, 1, 1, 0)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+material = SubResource("ShaderMaterial_bfmn0")
+offset_right = 288.0
+offset_bottom = 162.0
+color = Color(0.129412, 0.266667, 0.364706, 1)
+
+[node name="StartRect" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 86.0
+offset_bottom = 35.0
+
+[node name="Desert" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-365, 59)
+scale = Vector2(3, 2)
+texture = ExtResource("7_mhyp3")
+
+[node name="Tank" parent="CanvasLayer" instance=ExtResource("2_u2kgr")]
+unique_name_in_owner = true
+position = Vector2(172, 92)
+
+[node name="Gun" parent="CanvasLayer/Tank" instance=ExtResource("3_ftksw")]
+
+[node name="Node2D" parent="CanvasLayer/Tank/Gun" index="1"]
+rotation = 2.18481
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 20.0
+offset_top = 17.0
+offset_right = 86.0
+offset_bottom = 114.0
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_v4p4v")
+text = "START"
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer"]
+
+[node name="ShowCredits" type="Button" parent="CanvasLayer"]
+offset_left = 227.0
+offset_top = 139.0
+offset_right = 284.0
+offset_bottom = 158.0
+theme = ExtResource("3_v4p4v")
+toggle_mode = true
+text = "CREDITS"
+
+[node name="Credits" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
+offset_left = 77.0
+offset_top = 89.0
+offset_right = 302.0
+offset_bottom = 219.0
+theme = ExtResource("3_v4p4v")
+text = "GAME: DANEL GHERGHETTA
+
+MUSIC: JDSherbert - Ambiences Music Pack
+
+SOUND FX: ZAPSPLAT"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ssvnr")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+
+[connection signal="button_down" from="CanvasLayer/ShowCredits" to="CanvasLayer/Credits" method="show"]
+[connection signal="button_up" from="CanvasLayer/ShowCredits" to="CanvasLayer/Credits" method="hide"]
+
+[editable path="CanvasLayer/Tank/Gun"]

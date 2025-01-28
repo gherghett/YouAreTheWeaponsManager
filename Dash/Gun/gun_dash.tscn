@@ -1,0 +1,67 @@
+[gd_scene load_steps=12 format=3 uid="uid://cm2l0hv3qpm83"]
+
+[ext_resource type="Script" path="res://Dash/Gun/gun_dash.gd" id="1_qp846"]
+[ext_resource type="Texture2D" uid="uid://bir544vycly7v" path="res://Dash/Gun/dash.png" id="2_h5fhy"]
+[ext_resource type="PackedScene" uid="uid://ot323fald5l2" path="res://Dash/Gun/crank.tscn" id="3_3p084"]
+[ext_resource type="PackedScene" uid="uid://bovjhke06xl7p" path="res://Dash/Gun/switch.tscn" id="4_x1jvx"]
+[ext_resource type="Texture2D" uid="uid://bdi4kdkrgekbm" path="res://Dash/Gun/firebutton.png" id="5_jgenx"]
+[ext_resource type="Texture2D" uid="uid://rft36g1idfjw" path="res://Dash/Gun/firebutton_down.png" id="6_r58it"]
+[ext_resource type="Texture2D" uid="uid://bt4yv3p8sfs8r" path="res://Dash/Gun/firebutton_w_shadow.png" id="7_18kyp"]
+[ext_resource type="Texture2D" uid="uid://c6rpt1jqai0jh" path="res://Dash/Gun/safety.png" id="8_krbxs"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nix87"]
+texture = ExtResource("5_jgenx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dd0jc"]
+texture = ExtResource("6_r58it")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ayy2x"]
+texture = ExtResource("5_jgenx")
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_qp846")
+
+[node name="dash" type="Sprite2D" parent="."]
+scale = Vector2(1, 1.036)
+texture = ExtResource("2_h5fhy")
+centered = false
+
+[node name="Crank_distance" parent="." instance=ExtResource("3_3p084")]
+position = Vector2(74, 143)
+
+[node name="Crank" parent="." instance=ExtResource("3_3p084")]
+position = Vector2(29, 143)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 22.0
+offset_top = 5.0
+offset_right = 30.0
+offset_bottom = 13.0
+metadata/_edit_use_anchors_ = true
+
+[node name="safety" parent="." instance=ExtResource("4_x1jvx")]
+offset_left = 95.0
+offset_top = 132.0
+offset_right = 139.0
+offset_bottom = 159.0
+focus_mode = 0
+button_pressed = true
+
+[node name="fireButton" type="Button" parent="."]
+offset_left = 213.0
+offset_top = 126.0
+offset_right = 276.0
+offset_bottom = 158.0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_nix87")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dd0jc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ayy2x")
+
+[node name="shadow_firebutton" type="Sprite2D" parent="fireButton"]
+position = Vector2(28, 17)
+texture = ExtResource("7_18kyp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(137, 142)
+texture = ExtResource("8_krbxs")

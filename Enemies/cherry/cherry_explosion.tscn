@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://du356sggmqsot"]
+
+[ext_resource type="Texture2D" uid="uid://dmqx7122p1dty" path="res://Enemies/cherry/cherry_explosion.png" id="2_mdvbt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2h2g"]
+atlas = ExtResource("2_mdvbt")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnag4"]
+atlas = ExtResource("2_mdvbt")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h6tf"]
+atlas = ExtResource("2_mdvbt")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdtqb"]
+atlas = ExtResource("2_mdvbt")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fglf"]
+atlas = ExtResource("2_mdvbt")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4g7qp"]
+atlas = ExtResource("2_mdvbt")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cjf3y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2h2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnag4")
+}, {
+"duration": 1.3,
+"texture": SubResource("AtlasTexture_4h6tf")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_gdtqb")
+}, {
+"duration": 1.7,
+"texture": SubResource("AtlasTexture_4fglf")
+}, {
+"duration": 1.3,
+"texture": SubResource("AtlasTexture_4g7qp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="CherryExplosion" type="Node2D"]
+scale = Vector2(3, 3)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cjf3y")

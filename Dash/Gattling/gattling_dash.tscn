@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbnby5q2ppssy"]
+
+[ext_resource type="Script" path="res://Dash/Gattling/gattling_dash.gd" id="1_xmyv1"]
+[ext_resource type="Texture2D" uid="uid://bir544vycly7v" path="res://Dash/Gun/dash.png" id="2_yyswu"]
+[ext_resource type="Texture2D" uid="uid://djhcfthuoqjh3" path="res://Dash/Freeze/freeze_decal.png" id="3_0ldsa"]
+[ext_resource type="StyleBox" uid="uid://b242qfk3kgvdj" path="res://Dash/Freeze/button.tres" id="4_l7nvo"]
+[ext_resource type="Texture2D" uid="uid://c6t5n77ctt00x" path="res://Dash/Freeze/freezebutton.png" id="5_h8l6y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wv62"]
+atlas = ExtResource("5_h8l6y")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_038qe"]
+texture = SubResource("AtlasTexture_7wv62")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drpic"]
+atlas = ExtResource("5_h8l6y")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kb0ng"]
+texture = SubResource("AtlasTexture_drpic")
+
+[node name="GattlingDash" type="Node2D"]
+script = ExtResource("1_xmyv1")
+
+[node name="dash" type="Sprite2D" parent="."]
+position = Vector2(0, 22)
+scale = Vector2(1, 1.036)
+texture = ExtResource("2_yyswu")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="dash"]
+visible = false
+modulate = Color(0.584314, 0, 0.0745098, 1)
+position = Vector2(146, 138.031)
+texture = ExtResource("3_0ldsa")
+
+[node name="Button" type="Button" parent="dash"]
+modulate = Color(1, 0.270588, 0.203922, 1)
+offset_left = 127.0
+offset_top = 117.761
+offset_right = 135.0
+offset_bottom = 125.761
+scale = Vector2(3, 3)
+focus_mode = 0
+theme_override_styles/hover = ExtResource("4_l7nvo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_038qe")
+theme_override_styles/normal = SubResource("StyleBoxTexture_kb0ng")
+metadata/_edit_use_anchors_ = true

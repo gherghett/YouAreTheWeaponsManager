@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://c24lra8koht0k"]
+
+[ext_resource type="Texture2D" uid="uid://c6t5n77ctt00x" path="res://Dash/Freeze/freezebutton.png" id="1_lpamo"]
+
+[resource]
+atlas = ExtResource("1_lpamo")
+region = Rect2(0, 0, 32, 32)

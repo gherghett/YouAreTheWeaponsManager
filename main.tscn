@@ -1,0 +1,212 @@
+[gd_scene load_steps=13 format=3 uid="uid://db8x773ykn68f"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_u0oa5"]
+[ext_resource type="PackedScene" uid="uid://2aj8qorfhwh8" path="res://level/intro_level.tscn" id="2_n2m2i"]
+[ext_resource type="Script" path="res://drone.gd" id="3_lyhj0"]
+[ext_resource type="Texture2D" uid="uid://v7umusuj2bah" path="res://drone.png" id="4_31o3f"]
+[ext_resource type="Script" path="res://camera_2d.gd" id="6_g1kj1"]
+[ext_resource type="AudioStream" uid="uid://wx50euprq8xq" path="res://Music/JDSherbert - Ambiences Music Pack - Junction Jazz.mp3" id="6_y02el"]
+[ext_resource type="Script" path="res://upgrade_menu.gd" id="8_43ev7"]
+[ext_resource type="AudioStream" uid="uid://bfvvqxd23vkdg" path="res://felix_blume_fireworks_distant_new_years_eve_mexico.mp3" id="10_ood37"]
+[ext_resource type="AudioStream" uid="uid://bsdkgkvsgtyrl" path="res://zapsplat_multimedia_alert_chime_ring_ping_doorbell_like_tone_112377.mp3" id="11_xt02n"]
+[ext_resource type="Theme" uid="uid://cxn2lc75ns7uc" path="res://main.tres" id="15_ajom0"]
+[ext_resource type="FontFile" uid="uid://c2xcknduc03je" path="res://7pxMONOkeychainn.ttf" id="16_a8ig6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i2n64"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_u0oa5")
+
+[node name="level" parent="." instance=ExtResource("2_n2m2i")]
+
+[node name="Drone" type="Area2D" parent="."]
+rotation = 0.785398
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("3_lyhj0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drone"]
+shape = SubResource("CircleShape2D_i2n64")
+
+[node name="Node" type="Node2D" parent="Drone"]
+position = Vector2(-14.1421, -14.1421)
+rotation = -0.785398
+scale = Vector2(1, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Drone/Node"]
+rotation = 0.785398
+scale = Vector2(2, 2)
+texture = ExtResource("4_31o3f")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(364, 147)
+offset = Vector2(0, 80)
+zoom = Vector2(0.25, 0.25)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_bottom_margin = 0.0
+script = ExtResource("6_g1kj1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 2
+visible = false
+
+[node name="Container" type="Control" parent="CanvasLayer"]
+z_index = 100
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -41.0
+offset_right = 106.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartMenu" type="VBoxContainer" parent="CanvasLayer/Panel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/StartMenu"]
+layout_mode = 2
+theme = ExtResource("15_ajom0")
+theme_override_fonts/font = ExtResource("16_a8ig6")
+text = "Manage the Weapons
+Dont let poor tank be hurt"
+clip_text = true
+uppercase = true
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel/StartMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("15_ajom0")
+text = "START"
+
+[node name="RestartMenu" type="VBoxContainer" parent="CanvasLayer/Panel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/RestartMenu"]
+layout_mode = 2
+theme = ExtResource("15_ajom0")
+theme_override_fonts/font = ExtResource("16_a8ig6")
+text = "ya dead"
+clip_text = true
+uppercase = true
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel/RestartMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("15_ajom0")
+text = "RESTART"
+
+[node name="PauseMenu" type="VBoxContainer" parent="CanvasLayer/Panel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/PauseMenu"]
+layout_mode = 2
+theme = ExtResource("15_ajom0")
+theme_override_fonts/font = ExtResource("16_a8ig6")
+text = "PAUSED"
+clip_text = true
+uppercase = true
+
+[node name="Continue" type="Button" parent="CanvasLayer/Panel/PauseMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("15_ajom0")
+text = "CONTINUE"
+
+[node name="MainMenu" type="Button" parent="CanvasLayer/Panel/PauseMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("15_ajom0")
+text = "BACK TO MAiN MENU"
+
+[node name="UpgradeMenu" type="Panel" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -32.0
+offset_right = 111.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_43ev7")
+
+[node name="Items" type="VBoxContainer" parent="CanvasLayer/UpgradeMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UpgradeMenu/Items"]
+layout_mode = 2
+theme = ExtResource("15_ajom0")
+theme_override_fonts/font = ExtResource("16_a8ig6")
+text = "choose upgrade"
+clip_text = true
+uppercase = true
+
+[node name="UpgradeBg" type="AudioStreamPlayer2D" parent="CanvasLayer/UpgradeMenu"]
+stream = ExtResource("10_ood37")
+
+[node name="UpgradeChime" type="AudioStreamPlayer2D" parent="CanvasLayer/UpgradeMenu"]
+stream = ExtResource("11_xt02n")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_y02el")
+volume_db = -6.622
+autoplay = true
+parameters/looping = false
+
+[connection signal="body_entered" from="Drone" to="Drone" method="_on_body_entered"]
+[connection signal="pressed" from="CanvasLayer/Panel/StartMenu/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/RestartMenu/Button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/PauseMenu/Continue" to="." method="enter_started"]
+[connection signal="pressed" from="CanvasLayer/Panel/PauseMenu/MainMenu" to="." method="_on_main_menu_pressed"]

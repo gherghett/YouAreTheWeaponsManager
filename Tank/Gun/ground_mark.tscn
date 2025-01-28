@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://2srcsf4apc4m"]
+
+[ext_resource type="Texture2D" uid="uid://c1fxy4t3skdng" path="res://Tank/Gun/ground_mark.png" id="1_oj1l1"]
+
+[node name="ground_mark" type="Sprite2D"]
+scale = Vector2(3, 3)
+texture = ExtResource("1_oj1l1")
+offset = Vector2(0, -20)

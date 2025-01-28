@@ -1,0 +1,47 @@
+[gd_scene load_steps=11 format=3 uid="uid://dndiu65ruoedd"]
+
+[ext_resource type="AudioStream" uid="uid://ctupx4ajb823" path="res://Tank/Voice/Blocked/get_this_shit.mp3" id="1_1xk56"]
+[ext_resource type="Script" path="res://Tank/Voice/Blocked/blocked_voice.gd" id="1_jl8nb"]
+[ext_resource type="AudioStream" uid="uid://bqq0qbppotmxw" path="res://Tank/Voice/Blocked/going_this_way.mp3" id="2_gm25m"]
+[ext_resource type="AudioStream" uid="uid://b38crftxqap6i" path="res://Tank/Voice/Blocked/going_this_way_2.mp3" id="3_pbls3"]
+[ext_resource type="AudioStream" uid="uid://bk57dbpw0tm7o" path="res://Tank/Voice/Blocked/i_aint_changing.mp3" id="4_o6r2n"]
+[ext_resource type="AudioStream" uid="uid://chxprac2kmpp4" path="res://Tank/Voice/Blocked/i_aint_going_around.mp3" id="5_mgyfx"]
+[ext_resource type="AudioStream" uid="uid://c2mpsy3i5ojov" path="res://Tank/Voice/Blocked/there_smth_in_the_way.mp3" id="6_kyky8"]
+[ext_resource type="AudioStream" uid="uid://dwpqfcpbvje4m" path="res://Tank/Voice/Blocked/there_smth_in_the_way_2.mp3" id="7_ovw4k"]
+[ext_resource type="AudioStream" uid="uid://b6hd247166r52" path="res://Tank/Voice/Blocked/there_smth_in_the_way_3.mp3" id="8_xojwo"]
+[ext_resource type="AudioStream" uid="uid://cahdu07e8mkpf" path="res://Tank/Voice/Blocked/this_is_the_path.mp3" id="9_wn55b"]
+
+[node name="Blocked" type="Node2D"]
+script = ExtResource("1_jl8nb")
+
+[node name="CoolDown" type="Timer" parent="."]
+wait_time = 2.4
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="GetThisShit" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("1_1xk56")
+
+[node name="GoingThisWay" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("2_gm25m")
+
+[node name="GoingThisWay2" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("3_pbls3")
+
+[node name="IAintChanging" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("4_o6r2n")
+
+[node name="IAintGoingAround" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("5_mgyfx")
+
+[node name="ThereSmthInTheWay" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("6_kyky8")
+
+[node name="ThereSmthInTheWay2" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("7_ovw4k")
+
+[node name="ThereSmthInTheWay3" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("8_xojwo")
+
+[node name="ThisIsThePath" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("9_wn55b")

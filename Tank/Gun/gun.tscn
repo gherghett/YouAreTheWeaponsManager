@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=3 uid="uid://ipnc6f3h5cla"]
+
+[ext_resource type="Script" path="res://Tank/Gun/gun.gd" id="1_ws2qx"]
+[ext_resource type="Script" path="res://Tank/tankperspective.gd" id="2_gk14f"]
+[ext_resource type="Texture2D" uid="uid://4c0gihfwey8f" path="res://Tank/Gun/gun.png" id="3_u525o"]
+[ext_resource type="Script" path="res://Tank/Gun/shell.gd" id="4_o3vpa"]
+[ext_resource type="Texture2D" uid="uid://157t1f8nsggo" path="res://Tank/Gun/muzzle.png" id="5_17ctp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ac0sy"]
+radius = 91.9
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lobj"]
+atlas = ExtResource("5_17ctp")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cpv7"]
+atlas = ExtResource("5_17ctp")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3reqr"]
+animations = [{
+"frames": [{
+"duration": 0.1,
+"texture": null
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_7lobj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cpv7")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_ws2qx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_top = -9.0
+offset_right = 39.0
+offset_bottom = 5.0
+color = Color(0.601223, 0.601223, 0.601223, 1)
+
+[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("parent")]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_gk14f")
+parent = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 1.5)
+texture = ExtResource("3_u525o")
+offset = Vector2(12, 0)
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+position = Vector2(-20.4924, -2.24982)
+points = PackedVector2Array(22.4711, -0.216858, 70.69, 0.24982)
+width = 6.0
+default_color = Color(1, 1, 1, 0.34902)
+
+[node name="Timer" type="Timer" parent="Line2D"]
+one_shot = true
+
+[node name="Shell" type="Area2D" parent="."]
+position = Vector2(42.3726, 0.748138)
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("4_o3vpa")
+
+[node name="ColorRect" type="ColorRect" parent="Shell"]
+offset_left = -8.0
+offset_top = -7.0
+offset_right = 7.0
+offset_bottom = 6.0
+color = Color(0.147672, 0.147672, 0.147672, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shell"]
+shape = SubResource("CircleShape2D_ac0sy")
+
+[node name="muzzle_flash" type="AnimatedSprite2D" parent="."]
+position = Vector2(146, 1)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3reqr")
+frame = 1
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(200, 0)
+
+[connection signal="timeout" from="Line2D/Timer" to="." method="_on_timer_timeout"]

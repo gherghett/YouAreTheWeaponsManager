@@ -1,0 +1,52 @@
+[gd_scene load_steps=13 format=3 uid="uid://b6eofqbio6k4m"]
+
+[ext_resource type="Script" path="res://Upgrades/XP_Mng.gd" id="1_gysgn"]
+[ext_resource type="PackedScene" uid="uid://brq3oeii1wfge" path="res://Upgrades/weaon_upgrade.tscn" id="2_fljhf"]
+[ext_resource type="PackedScene" uid="uid://ipnc6f3h5cla" path="res://Tank/Gun/gun.tscn" id="3_mv6ja"]
+[ext_resource type="PackedScene" uid="uid://cm2l0hv3qpm83" path="res://Dash/Gun/gun_dash.tscn" id="4_mk2wb"]
+[ext_resource type="PackedScene" uid="uid://bj1tp7r2eigpt" path="res://Tank/RotationRattle/rotation_rattle.tscn" id="5_d3rqt"]
+[ext_resource type="PackedScene" uid="uid://b4igiyjtxi7in" path="res://Dash/RotationRattle/rotation_rattle_dash.tscn" id="6_8v752"]
+[ext_resource type="PackedScene" uid="uid://ffjutgfcktj8" path="res://Upgrades/StatUpgrade.tscn" id="7_kntqs"]
+[ext_resource type="Script" path="res://Upgrades/weaopn_upgrade.gd" id="8_dcbo8"]
+[ext_resource type="PackedScene" uid="uid://cli6ih4qdul74" path="res://Tank/Freeze/freeze_weapon.tscn" id="9_qwixy"]
+[ext_resource type="PackedScene" uid="uid://c8nxyr6qdtpkq" path="res://Dash/Freeze/freeze_dash.tscn" id="10_ucmxy"]
+[ext_resource type="PackedScene" uid="uid://cf43mhh5a11nj" path="res://Tank/Gattling/gattling.tscn" id="11_rwuqn"]
+[ext_resource type="PackedScene" uid="uid://dbnby5q2ppssy" path="res://Dash/Gattling/gattling_dash.tscn" id="12_4e2la"]
+
+[node name="XPManager" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_gysgn")
+
+[node name="LevelUpTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Upgrades" type="Node" parent="."]
+
+[node name="HugeGun" parent="Upgrades" instance=ExtResource("2_fljhf")]
+weapon = ExtResource("3_mv6ja")
+dash = ExtResource("4_mk2wb")
+desc = "A Huuuge gun"
+
+[node name="RotatiioinRattle" parent="Upgrades" instance=ExtResource("2_fljhf")]
+weapon = ExtResource("5_d3rqt")
+dash = ExtResource("6_8v752")
+desc = "A rotating machine gun"
+
+[node name="AddHealth" parent="Upgrades" instance=ExtResource("7_kntqs")]
+hp = 30
+multiple = true
+desc = "+30 HP"
+type = 1
+
+[node name="Freeze" type="Node" parent="Upgrades"]
+script = ExtResource("8_dcbo8")
+weapon = ExtResource("9_qwixy")
+dash = ExtResource("10_ucmxy")
+desc = "Freezing"
+
+[node name="Gattling" type="Node" parent="Upgrades"]
+script = ExtResource("8_dcbo8")
+weapon = ExtResource("11_rwuqn")
+dash = ExtResource("12_4e2la")
+
+[connection signal="timeout" from="LevelUpTimer" to="." method="level_up"]

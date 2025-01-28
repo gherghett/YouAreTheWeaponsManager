@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://d0bnpre5aoo7g"]
+
+[ext_resource type="Script" path="res://Enemies/cherry/cherry.gd" id="1_mudqt"]
+[ext_resource type="Texture2D" uid="uid://dbicyn0glq8wc" path="res://Enemies/cherry/cherry_running.png" id="2_mrk7c"]
+[ext_resource type="AudioStream" uid="uid://dvkyphxcmw6il" path="res://Enemies/cherry/zapsplat_cartoon_comic_ruler_twang_wood_short_006_108519.mp3" id="3_11bn8"]
+[ext_resource type="PackedScene" uid="uid://dt0o0yxrt0rkl" path="res://blink_on_damage.tscn" id="4_p84kl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lft11"]
+atlas = ExtResource("2_mrk7c")
+region = Rect2(0, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f47io"]
+atlas = ExtResource("2_mrk7c")
+region = Rect2(8, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbyui"]
+atlas = ExtResource("2_mrk7c")
+region = Rect2(16, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rw1p"]
+atlas = ExtResource("2_mrk7c")
+region = Rect2(24, 0, 8, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uf5rg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lft11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f47io")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbyui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rw1p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vhkh2"]
+radius = 2.66667
+
+[node name="Cherry" type="CharacterBody2D"]
+position = Vector2(51, 47)
+scale = Vector2(3, 3)
+collision_layer = 2
+collision_mask = 7
+motion_mode = 1
+platform_on_leave = 2
+platform_floor_layers = 4294967040
+script = ExtResource("1_mudqt")
+freezecolor = Color(0.179999, 0.15268, 0.599443, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uf5rg")
+frame_progress = 0.0430928
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.333333, 0.666667)
+shape = SubResource("CircleShape2D_vhkh2")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_11bn8")
+
+[node name="BlinkOnDamage" parent="." instance=ExtResource("4_p84kl")]
