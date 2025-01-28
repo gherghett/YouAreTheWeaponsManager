@@ -7,6 +7,8 @@ const MACHINE_GUN = preload("res://Tank/RotationRattle/machine_gun.mp3")
 @onready var line_2d: Line2D = $RayCast2D/Line2D
 const BULLET = preload("res://Tank/Gattling/bullet.tscn")
 
+signal update_meter
+
 var shot_damage = 10.0
 
 var max_ammo = 50
@@ -50,9 +52,11 @@ func _process(delta: float) -> void:
 	
 	
 func fire():
+
 	if ammo <= 0:
 		return
 	ammo -= 1
+	update_meter.emit(ammo)
 	#print("fireing, ammo: ", ammo)
 	SoundStage.play_at_location_var(MACHINE_GUN, position, 0.1)
 	muzzle_flash()
@@ -76,6 +80,8 @@ func fire():
 	
 func button_pressed():
 	ammo = max_ammo
+	update_meter.emit(ammo)
+
 
 func _on_fire_rate_timeout() -> void:
 	if ammo > 0:
