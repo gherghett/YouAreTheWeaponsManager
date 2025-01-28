@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b21qc4qojf82l"]
+[gd_scene load_steps=22 format=3 uid="uid://b21qc4qojf82l"]
 
 [ext_resource type="Script" path="res://Enemies/head/head.gd" id="1_m8ucn"]
 [ext_resource type="Texture2D" uid="uid://ia5nq43wk2qm" path="res://Enemies/head/head.png" id="2_nyprp"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bc5npdk3muoa0" path="res://Enemies/head/loading_laser.mp3" id="4_radav"]
 [ext_resource type="AudioStream" uid="uid://dp8ioc6ao675c" path="res://Enemies/head/zapsplat_multimedia_game_sound_retro_arcade_lo_fi_science_fiction_weapon_laser_harsh_107624.mp3" id="5_4we8q"]
 [ext_resource type="PackedScene" uid="uid://dt0o0yxrt0rkl" path="res://blink_on_damage.tscn" id="6_qvav5"]
+[ext_resource type="PackedScene" path="res://Enemies/freezable.tscn" id="7_cwkp8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r1wxl"]
 atlas = ExtResource("2_nyprp")
@@ -265,5 +266,7 @@ stream = ExtResource("5_4we8q")
 volume_db = -12.0
 
 [node name="BlinkOnDamage" parent="." instance=ExtResource("6_qvav5")]
+
+[node name="Freezable" parent="." instance=ExtResource("7_cwkp8")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

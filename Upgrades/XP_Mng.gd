@@ -49,6 +49,8 @@ func level_up():
 	progress = float(xp - last_lvl_up)/float(xp_next_lvl_up - last_lvl_up)
 	
 	leveled_up.emit([stats.pick_random(), weapons.pick_random()])
+	if xp >= xp_next_lvl_up:
+		level_up_timer.start()
 	
 func add_debug(thing:String):
 	$Upgrades.find_child(thing).use()

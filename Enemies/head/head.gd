@@ -4,7 +4,22 @@ const DEADSOUND = preload("res://Enemies/cherry/zapsplat_cartoon_comic_ruler_twa
 const EXPLOSION_SOUND = preload("res://Enemies/cherry/zapsplat_multimedia_game_sound_explode_glass_hit_shatter_bright_reverb_75212.mp3")
 const RING_OF_FIRE = preload("res://Enemies/head/ring_of_fire.tscn")
 
-var state : Refs.EnemyStates = Refs.EnemyStates.WAITING
+var state : Refs.EnemyStates = Refs.EnemyStates.WAITING : 
+	set(new_state) :
+		if(new_state == state):
+			return
+		exit_state(state)
+		match new_state:
+			Refs.EnemyStates.WAITING:
+				pass
+			Refs.EnemyStates.RUNNING:
+				$Timer.start()
+				pass
+			Refs.EnemyStates.FROZEN:
+				pass
+			Refs.EnemyStates.DEAD:
+				pass
+		state = new_state
 
 signal took_damage
 
@@ -22,21 +37,14 @@ var hp = 500.0 :
 		if new_value <= 0:
 			die()
 
+
+
 func _ready() -> void:
 	#enter_state(Refs.EnemyStates.RUNNING)
 	pass
 
-func enter_state(new_state : Refs.EnemyStates):
-	if(new_state == state):
-		return
-	exit_state(state)
-	match new_state:
-		Refs.EnemyStates.WAITING:
-			pass
-		Refs.EnemyStates.RUNNING:
-			$Timer.start()
-			pass
-	state = new_state
+#func enter_state(new_state : Refs.EnemyStates):
+
 			
 func exit_state(old_state : Refs.EnemyStates):
 	match old_state:
@@ -44,13 +52,15 @@ func exit_state(old_state : Refs.EnemyStates):
 			$AnimatedSprite2D.play("awake")
 		Refs.EnemyStates.RUNNING:
 			$Timer.stop()
+			close_eyes()
+			$AnimationPlayer.stop()
 
 func _process(delta: float) -> void:
 	var dir =  (Global.tank.position - position)
 	match state:
 		Refs.EnemyStates.WAITING:
 			if dir.length() < 400:
-				enter_state(Refs.EnemyStates.RUNNING)
+				state = Refs.EnemyStates.RUNNING
 	#$AnimatedSprite2D.flip_h = dir.x > 0
 	#position += dir * speed * delta
 
@@ -94,12 +104,14 @@ func close_eyes():
 	#return 10.0
 
 func destruct(val : float):
-	Global.xp_mng.add_xp(10)
 	hp -= val
+	if state == Refs.EnemyStates.DEAD:
+		Global.xp_mng.add_xp(100)
 	took_damage.emit()
 
 func die():
 	#SoundStage.play_at_location(DEADSOUND, position)
+	
 	queue_free()
 	
 
