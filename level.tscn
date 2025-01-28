@@ -1,25 +1,25 @@
-[gd_scene load_steps=29 format=4]
+[gd_scene load_steps=29 format=4 uid="uid://bkdlers7ntdnt"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_g3r37"]
-[ext_resource type="Texture2D" path="res://desert.png" id="2_4e2pt"]
+[ext_resource type="Texture2D" uid="uid://dl0sdxwadrb1a" path="res://desert.png" id="2_4e2pt"]
 [ext_resource type="Script" path="res://cherry_spawner.gd" id="3_ovgu1"]
 [ext_resource type="Script" path="res://gun_pickup.gd" id="4_ia2bp"]
-[ext_resource type="PackedScene" path="res://Tank/Gun/gun.tscn" id="5_7bsnf"]
-[ext_resource type="PackedScene" path="res://Dash/Gun/gun_dash.tscn" id="6_37vyn"]
-[ext_resource type="PackedScene" path="res://Tank/RotationRattle/rotation_rattle.tscn" id="7_wivqk"]
-[ext_resource type="PackedScene" path="res://Dash/RotationRattle/rotation_rattle_dash.tscn" id="8_j4cca"]
-[ext_resource type="PackedScene" path="res://Enemies/head/head.tscn" id="9_hcdco"]
-[ext_resource type="PackedScene" path="res://Enemies/cherry/cherry.tscn" id="10_akxy3"]
-[ext_resource type="PackedScene" path="res://level/Obsticles/box.tscn" id="11_fipci"]
-[ext_resource type="PackedScene" path="res://Dash/Freeze/static_destructable.tscn" id="12_ehlse"]
-[ext_resource type="PackedScene" path="res://Tank/tank.tscn" id="13_0i8eb"]
+[ext_resource type="PackedScene" uid="uid://ipnc6f3h5cla" path="res://Tank/Gun/gun.tscn" id="5_7bsnf"]
+[ext_resource type="PackedScene" uid="uid://cm2l0hv3qpm83" path="res://Dash/Gun/gun_dash.tscn" id="6_37vyn"]
+[ext_resource type="PackedScene" uid="uid://bj1tp7r2eigpt" path="res://Tank/RotationRattle/rotation_rattle.tscn" id="7_wivqk"]
+[ext_resource type="PackedScene" uid="uid://b4igiyjtxi7in" path="res://Dash/RotationRattle/rotation_rattle_dash.tscn" id="8_j4cca"]
+[ext_resource type="PackedScene" uid="uid://b21qc4qojf82l" path="res://Enemies/head/head.tscn" id="9_hcdco"]
+[ext_resource type="PackedScene" uid="uid://d0bnpre5aoo7g" path="res://Enemies/cherry/cherry.tscn" id="10_akxy3"]
+[ext_resource type="PackedScene" uid="uid://cmlsx3l33xdwy" path="res://level/Obsticles/box.tscn" id="11_fipci"]
+[ext_resource type="PackedScene" uid="uid://boxqy6x1hbrb3" path="res://Dash/Freeze/static_destructable.tscn" id="12_ehlse"]
+[ext_resource type="PackedScene" uid="uid://bgexubhu8mcty" path="res://Tank/tank.tscn" id="13_0i8eb"]
 [ext_resource type="Script" path="res://dashes.gd" id="14_ywrk3"]
 [ext_resource type="Script" path="res://mouse_followe.gd" id="15_6t1qe"]
-[ext_resource type="Texture2D" path="res://xp_progress_bar_under.png" id="16_hyt0v"]
-[ext_resource type="Texture2D" path="res://hp_progress_bar_progress.png" id="17_0mff3"]
-[ext_resource type="Texture2D" path="res://xp_progress_bar_progress.png" id="18_a13sb"]
+[ext_resource type="Texture2D" uid="uid://vw5ou8i4qsu1" path="res://xp_progress_bar_under.png" id="16_hyt0v"]
+[ext_resource type="Texture2D" uid="uid://p7787xmgi0wf" path="res://hp_progress_bar_progress.png" id="17_0mff3"]
+[ext_resource type="Texture2D" uid="uid://di47a24f0hc4r" path="res://xp_progress_bar_progress.png" id="18_a13sb"]
 [ext_resource type="Script" path="res://level/debug_menu.gd" id="19_15ci1"]
-[ext_resource type="PackedScene" path="res://Upgrades/XPManager.tscn" id="20_2tpky"]
+[ext_resource type="PackedScene" uid="uid://b6eofqbio6k4m" path="res://Upgrades/XPManager.tscn" id="20_2tpky"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m7ba0"]
 texture = ExtResource("2_4e2pt")
@@ -407,7 +407,7 @@ rotation = 0.875861
 shape = SubResource("RectangleShape2D_8mpgc")
 
 [node name="Head" parent="OnGround" instance=ExtResource("9_hcdco")]
-position = Vector2(842, 326)
+position = Vector2(-783, -1)
 
 [node name="Cherry" parent="OnGround" instance=ExtResource("10_akxy3")]
 position = Vector2(-925.22, 72.6658)
@@ -465,7 +465,6 @@ position = Vector2(-957.607, 72.7515)
 rotation = 0.0493924
 scale = Vector2(0.999999, 0.999999)
 velocity = Vector2(12.4847, 0.617274)
-speed = 25
 
 [node name="Smoke" type="Node2D" parent="."]
 

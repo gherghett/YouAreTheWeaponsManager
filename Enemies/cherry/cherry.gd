@@ -5,7 +5,6 @@ const EXPLOSION_SOUND = preload("res://Enemies/cherry/zapsplat_multimedia_game_s
 
 signal took_damage
 
-@export var freezecolor : Color
 const WHITE_OUT_MATERIAL = preload("res://Enemies/cherry/white_out_material.tres")
 var speed = 4000
 var hp = 10 : 
@@ -18,24 +17,7 @@ var state : Refs.EnemyStates = Refs.EnemyStates.RUNNING
 
 func _ready() -> void:
 	$AnimatedSprite2D.play()
-	Global.freeze.connect(freeze)
 	
-func freeze(time):
-	$AnimatedSprite2D.modulate = freezecolor
-	$AnimatedSprite2D.pause()
-	state = Refs.EnemyStates.FROZEN
-	var freeze_timer = Timer.new()
-	add_child(freeze_timer)
-	freeze_timer.wait_time = time
-	freeze_timer.start()
-	freeze_timer.timeout.connect(thaw)
-	freeze_timer.timeout.connect(freeze_timer.queue_free)
-	
-func thaw():
-	$AnimatedSprite2D.modulate = Color.WHITE
-	state = Refs.EnemyStates.RUNNING
-	$AnimatedSprite2D.play()
-
 func _physics_process(delta: float) -> void:
 	match state:
 		Refs.EnemyStates.RUNNING:
