@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://cf43mhh5a11nj"]
+
+[ext_resource type="Script" path="res://Tank/Gattling/gattling.gd" id="1_3ga5t"]
+[ext_resource type="Texture2D" uid="uid://d4eytdscfbxxu" path="res://tiny_muzzle_flashes.png" id="2_7aps3"]
+[ext_resource type="PackedScene" uid="uid://bf2dee14btky3" path="res://Tank/Gattling/bullet.tscn" id="3_64ijl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmevv"]
+atlas = ExtResource("2_7aps3")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh6h0"]
+atlas = ExtResource("2_7aps3")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyig2"]
+atlas = ExtResource("2_7aps3")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buoss"]
+atlas = ExtResource("2_7aps3")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_djax7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmevv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh6h0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyig2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buoss")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Gattling" type="Node2D"]
+script = ExtResource("1_3ga5t")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-6, 3)
+target_position = Vector2(1000, 0)
+collision_mask = 2
+
+[node name="ColorRect" type="ColorRect" parent="RayCast2D"]
+offset_left = -7.0
+offset_top = -3.0
+offset_right = 13.0
+offset_bottom = 3.0
+color = Color(0.0862745, 0.109804, 0.278431, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RayCast2D/ColorRect"]
+position = Vector2(23, 3)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_djax7")
+
+[node name="Line2D" type="Line2D" parent="RayCast2D"]
+position = Vector2(6, -3)
+points = PackedVector2Array(-1, 3, 115, 3)
+width = 3.0
+
+[node name="Bullet" parent="." instance=ExtResource("3_64ijl")]
+
+[node name="BulletStartPosition" type="Marker2D" parent="."]
+position = Vector2(21, 1)

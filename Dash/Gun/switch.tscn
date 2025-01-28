@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bovjhke06xl7p"]
+
+[ext_resource type="Texture2D" uid="uid://3ohyvgjndo7q" path="res://Dash/Gun/switch_checked.png" id="1_angdo"]
+[ext_resource type="Texture2D" uid="uid://wyj6ofggsibl" path="res://Dash/Gun/switch_unchecked.png" id="2_qnnfb"]
+
+[node name="Button" type="CheckButton"]
+offset_right = 44.0
+offset_bottom = 24.0
+theme_override_icons/checked = ExtResource("1_angdo")
+theme_override_icons/unchecked = ExtResource("2_qnnfb")

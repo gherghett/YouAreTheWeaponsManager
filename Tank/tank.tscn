@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://bgexubhu8mcty"]
+
+[ext_resource type="Script" path="res://Tank/tank.gd" id="1_7ivk8"]
+[ext_resource type="Texture2D" uid="uid://cr1ebi2yjwpvw" path="res://Tank/tank.png" id="2_6flmi"]
+[ext_resource type="Script" path="res://Tank/tankperspective.gd" id="2_083ni"]
+[ext_resource type="Texture2D" uid="uid://dd86d2c0umiag" path="res://Tank/tank_middle.png" id="4_51pnc"]
+[ext_resource type="Texture2D" uid="uid://butgvouh6mia2" path="res://Tank/tank_top.png" id="5_cfb5j"]
+[ext_resource type="PackedScene" uid="uid://dndiu65ruoedd" path="res://Tank/Voice/Blocked/blocked_voice.tscn" id="6_m1isd"]
+[ext_resource type="PackedScene" uid="uid://dt0o0yxrt0rkl" path="res://blink_on_damage.tscn" id="7_vkdvq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_me5bb"]
+size = Vector2(42, 22)
+
+[node name="Tank" type="CharacterBody2D"]
+rotation = -2.18481
+collision_mask = 7
+floor_stop_on_slope = false
+floor_block_on_wall = false
+platform_on_leave = 2
+platform_floor_layers = 4294967168
+script = ExtResource("1_7ivk8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -19.8744
+offset_top = -21.2134
+offset_right = 20.1256
+offset_bottom = 18.7866
+
+[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("parent")]
+rotation = 2.18481
+scale = Vector2(1, 0.5)
+script = ExtResource("2_083ni")
+parent = NodePath("..")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D"]
+use_parent_material = true
+position = Vector2(0, 16)
+rotation = -2.18481
+scale = Vector2(3, 3)
+texture = ExtResource("2_6flmi")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
+use_parent_material = true
+position = Vector2(0, 8)
+rotation = -2.18481
+scale = Vector2(3, 3)
+texture = ExtResource("4_51pnc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+use_parent_material = true
+rotation = -2.18481
+scale = Vector2(3, 3)
+texture = ExtResource("5_cfb5j")
+
+[node name="ThisTransformsTheRealCollsionShape" type="CollisionShape2D" parent="Node2D"]
+visible = false
+position = Vector2(0, 2)
+rotation = -2.18481
+scale = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_me5bb")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Node2D/ThisTransformsTheRealCollsionShape"]
+remote_path = NodePath("../../../CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.817342, -0.576153)
+rotation = -0.339835
+scale = Vector2(0.706374, 1.73325)
+skew = 0.614989
+shape = SubResource("RectangleShape2D_me5bb")
+
+[node name="Voice" type="Node" parent="."]
+
+[node name="Blocked" parent="Voice" instance=ExtResource("6_m1isd")]
+
+[node name="BlinkOnDamage" parent="." instance=ExtResource("7_vkdvq")]
+material_node = NodePath("../Node2D")

@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cfqd7tcm5b262"]
+
+[ext_resource type="Shader" path="res://Enemies/cherry/damage_shader.gdshader" id="1_2e4ob"]
+
+[resource]
+shader = ExtResource("1_2e4ob")
+shader_parameter/active = false

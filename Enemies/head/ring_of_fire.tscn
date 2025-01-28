@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://d18jbo0njuyga"]
+
+[ext_resource type="Texture2D" uid="uid://2fxi2c4uvpre" path="res://Enemies/head/ring_of_fire.png" id="1_6nfod"]
+[ext_resource type="Script" path="res://Enemies/head/ring_of_fire.gd" id="1_mdabc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w50oo"]
+atlas = ExtResource("1_6nfod")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tunw7"]
+atlas = ExtResource("1_6nfod")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1pin"]
+atlas = ExtResource("1_6nfod")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsxsn"]
+atlas = ExtResource("1_6nfod")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fclac"]
+atlas = ExtResource("1_6nfod")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnxko"]
+atlas = ExtResource("1_6nfod")
+region = Rect2(320, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2ao4"]
+atlas = ExtResource("1_6nfod")
+region = Rect2(384, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n12m"]
+atlas = ExtResource("1_6nfod")
+region = Rect2(448, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_36atx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w50oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tunw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1pin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsxsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fclac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnxko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2ao4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n12m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxanc"]
+size = Vector2(49, 16)
+
+[node name="RingOfFire" type="Area2D"]
+z_as_relative = false
+scale = Vector2(3, 3)
+collision_layer = 4
+script = ExtResource("1_mdabc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_36atx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_nxanc")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

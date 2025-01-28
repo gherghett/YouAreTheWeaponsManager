@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cxn2lc75ns7uc"]
+
+[ext_resource type="FontFile" uid="uid://c2xcknduc03je" path="res://7pxMONOkeychainn.ttf" id="1_xx8pc"]
+
+[resource]
+Button/fonts/font = ExtResource("1_xx8pc")
+Label/fonts/font = ExtResource("1_xx8pc")
+RichTextLabel/fonts/normal_font = ExtResource("1_xx8pc")
