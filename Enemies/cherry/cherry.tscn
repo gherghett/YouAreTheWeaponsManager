@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://cfqd7tcm5b262" path="res://Enemies/cherry/white_out_material.tres" id="2_wiurq"]
 [ext_resource type="AudioStream" uid="uid://dvkyphxcmw6il" path="res://Enemies/cherry/zapsplat_cartoon_comic_ruler_twang_wood_short_006_108519.mp3" id="3_11bn8"]
 [ext_resource type="PackedScene" uid="uid://dt0o0yxrt0rkl" path="res://blink_on_damage.tscn" id="4_p84kl"]
-[ext_resource type="PackedScene" uid="uid://c41kwdyitvr7p" path="res://Enemies/freezable.tscn" id="6_oifb2"]
+[ext_resource type="PackedScene" path="res://Enemies/freezable.tscn" id="6_oifb2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lft11"]
 atlas = ExtResource("2_mrk7c")

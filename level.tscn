@@ -407,7 +407,7 @@ rotation = 0.875861
 shape = SubResource("RectangleShape2D_8mpgc")
 
 [node name="Head" parent="OnGround" instance=ExtResource("9_hcdco")]
-position = Vector2(-783, -1)
+position = Vector2(-557, 219)
 
 [node name="Cherry" parent="OnGround" instance=ExtResource("10_akxy3")]
 position = Vector2(-925.22, 72.6658)

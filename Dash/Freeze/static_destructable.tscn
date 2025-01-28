@@ -1,18 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://boxqy6x1hbrb3"]
+[gd_scene load_steps=5 format=3 uid="uid://boxqy6x1hbrb3"]
 
 [ext_resource type="Script" path="res://DestructableStatic.gd" id="1_nxp8t"]
+[ext_resource type="Texture2D" uid="uid://cv4ig1ch03pus" path="res://level/house_smaller.png" id="2_d6rhx"]
+[ext_resource type="PackedScene" uid="uid://dt0o0yxrt0rkl" path="res://blink_on_damage.tscn" id="3_ashb0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_soly8"]
-size = Vector2(93, 54.5)
+size = Vector2(173.75, 188.625)
 
 [node name="Node2D" type="StaticBody2D"]
 script = ExtResource("1_nxp8t")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 90.0
 offset_bottom = 55.0
 color = Color(0.679641, 0.117027, 0.188508, 1)
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_d6rhx")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(45, 27.75)
+position = Vector2(0.125, -59.6875)
 shape = SubResource("RectangleShape2D_soly8")
+
+[node name="BlinkOnDamage" parent="." instance=ExtResource("3_ashb0")]
+material_node = NodePath("../Sprite2D")
