@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://2aj8qorfhwh8"]
+[gd_scene load_steps=50 format=4 uid="uid://2aj8qorfhwh8"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_cp067"]
 [ext_resource type="Texture2D" uid="uid://dl0sdxwadrb1a" path="res://desert.png" id="2_43o3h"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bgexubhu8mcty" path="res://Tank/tank.tscn" id="10_pprtn"]
 [ext_resource type="PackedScene" uid="uid://cmlsx3l33xdwy" path="res://level/Obsticles/box.tscn" id="11_bcvsc"]
 [ext_resource type="Script" path="res://dashes.gd" id="11_ff3xx"]
+[ext_resource type="PackedScene" uid="uid://1ntdn636srko" path="res://level/boxspawnpoint.tscn" id="11_n3n8h"]
 [ext_resource type="Script" path="res://mouse_followe.gd" id="12_7hyed"]
 [ext_resource type="PackedScene" uid="uid://boxqy6x1hbrb3" path="res://Dash/Freeze/static_destructable.tscn" id="12_54uib"]
 [ext_resource type="Texture2D" uid="uid://vw5ou8i4qsu1" path="res://xp_progress_bar_under.png" id="13_h3kig"]
@@ -490,6 +491,23 @@ sprite_frames = SubResource("SpriteFrames_trs73")
 [node name="HumanCrowdSoccerX150CheerClapWhistle" type="AudioStreamPlayer" parent="Ground/Lap"]
 stream = ExtResource("10_0poc2")
 volume_db = -10.0
+
+[node name="Boxspawnpoint" parent="Ground" instance=ExtResource("11_n3n8h")]
+position = Vector2(-438, -176)
+
+[node name="Boxspawnpoint2" parent="Ground" instance=ExtResource("11_n3n8h")]
+
+[node name="Boxspawnpoint3" parent="Ground" instance=ExtResource("11_n3n8h")]
+position = Vector2(857, -171)
+
+[node name="Boxspawnpoint4" parent="Ground" instance=ExtResource("11_n3n8h")]
+position = Vector2(654, 292)
+
+[node name="Boxspawnpoint5" parent="Ground" instance=ExtResource("11_n3n8h")]
+position = Vector2(8, 370)
+
+[node name="Boxspawnpoint6" parent="Ground" instance=ExtResource("11_n3n8h")]
+position = Vector2(125, 56)
 
 [node name="OnGround" type="Node2D" parent="."]
 
