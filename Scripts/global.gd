@@ -15,6 +15,7 @@ var tank : Node
 var match_mng : MatchManager
 var xp_mng : XPManager
 var upgrade_menu : Node
+var debug
 
 enum State {
 	pre,
@@ -28,7 +29,8 @@ var tank_state : Refs.TankState = Refs.TankState.RUNNING
 
 var hp = 100.0 :
 	set( new_val ):
-		hp = new_val
+		if not debug.invincible:
+			hp = new_val
 		tank.took_damage.emit()
 		dashes.find_child("HealthBar").value = hp
 		if(new_val <= 0):

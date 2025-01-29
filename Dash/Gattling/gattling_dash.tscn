@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dbnby5q2ppssy"]
+[gd_scene load_steps=13 format=3 uid="uid://dbnby5q2ppssy"]
 
 [ext_resource type="Script" path="res://Dash/Gattling/gattling_dash.gd" id="1_xmyv1"]
 [ext_resource type="Texture2D" uid="uid://bir544vycly7v" path="res://Dash/Gun/dash.png" id="2_yyswu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c6t5n77ctt00x" path="res://Dash/Freeze/freezebutton.png" id="5_h8l6y"]
 [ext_resource type="Texture2D" uid="uid://cir2n0u7j2twi" path="res://Dash/Gattling/meter.png" id="6_nhowh"]
 [ext_resource type="Script" path="res://Dash/Gattling/meter.gd" id="7_q21ga"]
+[ext_resource type="Theme" uid="uid://cxn2lc75ns7uc" path="res://main.tres" id="8_682ah"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7wv62"]
 atlas = ExtResource("5_h8l6y")
@@ -67,3 +68,25 @@ offset_bottom = 1.0
 rotation = 4.88692
 pivot_offset = Vector2(1, 1)
 color = Color(0.47, 0.0752, 0.0817799, 1)
+
+[node name="LabelReload" type="Label" parent="dash"]
+offset_left = 80.0
+offset_top = 121.622
+offset_right = 122.0
+offset_bottom = 144.622
+theme = ExtResource("8_682ah")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "RELOAD"
+
+[node name="GATTLING" type="Label" parent="dash"]
+offset_left = 9.0
+offset_top = 111.004
+offset_right = 116.0
+offset_bottom = 158.004
+theme = ExtResource("8_682ah")
+theme_override_colors/font_color = Color(0.0313726, 0, 0, 0.619608)
+theme_override_colors/font_shadow_color = Color(0.231373, 0.709804, 0.345098, 0.0901961)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 25
+text = "GATTLING
+GUN"

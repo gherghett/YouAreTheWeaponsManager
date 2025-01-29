@@ -14,7 +14,10 @@ const INTRO_LEVEL = preload("res://level/intro_level.tscn")
 func _ready() -> void:
 	Global.main = self
 	Global.upgrade_menu = upgrade_menu
+	Refs.main_ready.emit()
 	enter_pre()
+
+	
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause_menu"):

@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnt4wnylrc8u"]
+[gd_scene load_steps=3 format=3 uid="uid://bnt4wnylrc8u"]
 
 [ext_resource type="Script" path="res://SoundStage/sound_stage.gd" id="1_4yx2k"]
+[ext_resource type="AudioStream" uid="uid://cvoee11wv3rkc" path="res://SoundStage/zapsplat_multimedia_game_sound_hit_metallic_ring_score_target_001_70850.mp3" id="2_ealef"]
 
 [node name="SoundStage" type="Node2D"]
 script = ExtResource("1_4yx2k")
+
+[node name="XpTimerCoolDown" type="Timer" parent="."]
+one_shot = true
+
+[node name="xpding" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ealef")
+volume_db = -5.0
+
+[connection signal="timeout" from="XpTimerCoolDown" to="." method="_on_xp_timer_cool_down_timeout"]

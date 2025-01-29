@@ -18,3 +18,5 @@ enum EnemyStates {
 	FROZEN,
 	DEAD
 }
+
+signal main_ready

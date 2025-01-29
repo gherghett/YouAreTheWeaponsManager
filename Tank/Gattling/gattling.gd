@@ -65,7 +65,7 @@ func fire():
 	$BulletStartPosition
 	var new_bullet = BULLET.instantiate()
 	new_bullet.global_position = $BulletStartPosition.global_position
-	new_bullet.rotation = rotation
+	new_bullet.rotation = global_rotation
 	add_child(new_bullet)
 	
 	##ray_cast_2d.visible = not ray_cast_2d.visible

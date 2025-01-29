@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cn8ogm8pv3y3i"]
+[gd_scene load_steps=15 format=3 uid="uid://cn8ogm8pv3y3i"]
 
 [ext_resource type="Script" path="res://MainMenu/main_menu.gd" id="1_wvtpv"]
 [ext_resource type="Shader" path="res://MainMenu/hyper.gdshader" id="2_l6yyb"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://cxn2lc75ns7uc" path="res://main.tres" id="3_v4p4v"]
 [ext_resource type="Texture2D" uid="uid://cjpkvtjwlyl6d" path="res://pattern.png" id="4_ja14l"]
 [ext_resource type="AudioStream" uid="uid://xosfhysdibqx" path="res://MainMenu/menu_2.mp3" id="5_ssvnr"]
+[ext_resource type="Texture2D" uid="uid://vatvxc4hpf11" path="res://MainMenu/title.png" id="7_8yhab"]
 [ext_resource type="Texture2D" uid="uid://dl0sdxwadrb1a" path="res://desert.png" id="7_mhyp3"]
 [ext_resource type="Shader" path="res://MainMenu/square_swirl.gdshader" id="8_jh81s"]
 
@@ -84,9 +85,14 @@ position = Vector2(-365, 59)
 scale = Vector2(3, 2)
 texture = ExtResource("7_mhyp3")
 
+[node name="Title" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(176, 54)
+texture = ExtResource("7_8yhab")
+
 [node name="Tank" parent="CanvasLayer" instance=ExtResource("2_u2kgr")]
 unique_name_in_owner = true
-position = Vector2(172, 92)
+position = Vector2(176, 113)
 
 [node name="Gun" parent="CanvasLayer/Tank" instance=ExtResource("3_ftksw")]
 
