@@ -69,7 +69,8 @@ func enter_end():
 	get_tree().paused = true
 	Global.current_state = Global.State.end
 	%RestartMenu.visible = true
-	
+	$CanvasLayer/Panel/RestartMenu/Label.text = "\nYOU DIED WITH \n " + str(Global.level.lap-1) + " \nLAPS COMPLETED"
+
 func end(delta):
 	pass
 	

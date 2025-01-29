@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://1ntdn636srko"]
+
+[ext_resource type="Script" path="res://level/boxspawnpoint.gd" id="1_0yhof"]
+
+[node name="Boxspawnpoint" type="Marker2D"]
+position = Vector2(135, -160)
+script = ExtResource("1_0yhof")

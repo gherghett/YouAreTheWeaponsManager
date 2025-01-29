@@ -10,6 +10,7 @@ const GUN_DASH = preload("res://Dash/Gun/gun_dash.tscn")
 const ROTATION_RATTLE_DASH = preload("res://Dash/RotationRattle/rotation_rattle_dash.tscn")
 const XP_MANAGER = preload("res://Upgrades/XPManager.tscn")
 const HEAD = preload("res://Enemies/head/head.tscn")
+const BOX = preload("res://level/Obsticles/box.tscn")
 
 func _ready() -> void:
 	Global.level = self
@@ -23,11 +24,25 @@ func load_lap():
 	var spawnpoints = get_tree().get_nodes_in_group("headspawnpoint")
 	print("Its lap ", Global.level.lap, " spawning ", Global.level.lap-1, " heads." )
 	for i in range(Global.level.lap-1):
+		if len(spawnpoints) == 0:
+			break
 		var spawn = spawnpoints[0]
 		spawnpoints.remove_at(0)
 		var head = HEAD.instantiate()
 		head.global_position = spawn.global_position
 		Global.main.ground.add_child(head)
+	
+	var boxspawnpoints = get_tree().get_nodes_in_group("boxspawnpoint")
+	for i in range(randi_range(Global.level.lap, Global.level.lap+3)):
+		if len(boxspawnpoints) > 0:
+			var spawn = boxspawnpoints.pick_random()
+			boxspawnpoints.remove_at(boxspawnpoints.bsearch(spawn))
+			for j in range(Global.level.lap*2*randi_range(1,3)):
+				var box : RigidBody2D = BOX.instantiate()
+				box.global_position = spawn.global_position + (Vector2.RIGHT * randf()*100*3).rotated(randf()*2*PI)
+				Global.main.on_ground.add_child(box)
+				while box.get_contact_count() > 0:
+					box.position.x += 20
 
 func _process(delta: float) -> void:
 	pass
