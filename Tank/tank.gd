@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Tank
 ############# TANK
 
 signal took_damage
@@ -76,7 +76,7 @@ func dir_to_follow():
 func running(delta):
 	var distance = dir_to_follow().length()
 	if(distance < distance_until_blocked):
-		Global.level.path_follow_2d.progress += speed * delta
+		Global.level.path_follow_2d.progress += speed * 2.0 * delta
 	if(distance >= distance_until_blocked):
 		enter_state(Refs.TankState.BLOCKED)
 

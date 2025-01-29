@@ -31,8 +31,9 @@ func _process(delta: float) -> void:
 			Starfield.material.set("shader_parameter/high", 1-distance/25)
 			square_swirl.material.set("shader_parameter/brightness_cutoff", distance/20)
 			square_swirl.material.set("shader_parameter/alpha_of_darkness", distance/25)
-			
+			$CanvasLayer/Title.modulate.a =  1 - (distance - 13) / 12
 			if(distance < 12):
+				$CanvasLayer/Title.modulate.a =  (distance) / 12
 				#color_rect_2.material.set("shader_parameter/low", 1-distance/12)
 				color_rect.color.a = distance/12
 			$CanvasLayer/Desert.modulate.a = 1 - distance/25
@@ -41,6 +42,8 @@ func _process(delta: float) -> void:
 		else:
 			color_rect.color.a = 1.0
 			$CanvasLayer/Desert.modulate.a = 0.0
+			$CanvasLayer/Title.modulate.a = 0.0
+			
 			
 	else:
 		music.pitch_scale = 1.0

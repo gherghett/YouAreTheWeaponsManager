@@ -18,3 +18,17 @@ func play_at_location_var(stream: AudioStream, location : Vector2, pitch_varianc
 	
 	return new_audio
 	
+	
+var xp_dings_in_a_row = 0
+func play_xp(_amount):
+	$XpTimerCoolDown.start($XpTimerCoolDown.wait_time)
+	xp_dings_in_a_row += 1
+	var dupe = $xpding.duplicate()
+	add_child(dupe)
+	dupe.play()
+	dupe.pitch_scale = 1.5 + (0.2 * (xp_dings_in_a_row-1))
+	dupe.finished.connect(dupe.queue_free)
+	
+	
+func _on_xp_timer_cool_down_timeout() -> void:
+	xp_dings_in_a_row = 0

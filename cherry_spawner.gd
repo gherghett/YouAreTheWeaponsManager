@@ -8,7 +8,9 @@ func _process(delta: float) -> void:
 		var cherry = CHERRY.instantiate()
 		Global.main.ground.add_child(cherry)
 		cherry.global_position = Global.tank.global_position + random_dir() * distance 
-		spawn_timer = randf() * 3
+		spawn_timer = randf() * 6 
+		if(Global.level.lap > 0):
+			spawn_timer = spawn_timer / (Global.level.lap + 1)
 
 func random_dir():
 	return Vector2(randf()-0.5, randf()-0.5).normalized()

@@ -28,6 +28,7 @@ func _ready() -> void:
 	
 func add_xp(xp_to_add):
 	xp += xp_to_add
+	SoundStage.play_xp(xp_to_add)
 	progress = float(xp - last_lvl_up)/float(xp_next_lvl_up - last_lvl_up)
 	if xp >= xp_next_lvl_up:
 		level_up_timer.start()

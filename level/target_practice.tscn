@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg0sxp2n2473h"]
+
+[ext_resource type="Script" path="res://level/target_practice.gd" id="1_qtnll"]
+[ext_resource type="Texture2D" uid="uid://bywf7wqd7r8my" path="res://target.png" id="2_qwknw"]
+[ext_resource type="AudioStream" uid="uid://c504ref1am1ra" path="res://addons/kenney digital audio/power_up_7.ogg" id="3_d2adh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjb1g"]
+size = Vector2(42, 40)
+
+[node name="target_practice" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_qtnll")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_hjb1g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_qwknw")
+
+[node name="PowerUp7" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_d2adh")

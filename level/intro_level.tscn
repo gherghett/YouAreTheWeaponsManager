@@ -1,15 +1,19 @@
-[gd_scene load_steps=30 format=4 uid="uid://2aj8qorfhwh8"]
+[gd_scene load_steps=49 format=4 uid="uid://2aj8qorfhwh8"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_cp067"]
 [ext_resource type="Texture2D" uid="uid://dl0sdxwadrb1a" path="res://desert.png" id="2_43o3h"]
 [ext_resource type="PackedScene" uid="uid://d0bnpre5aoo7g" path="res://Enemies/cherry/cherry.tscn" id="3_kxbee"]
 [ext_resource type="Script" path="res://cherry_spawner.gd" id="4_lquwa"]
 [ext_resource type="Script" path="res://gun_pickup.gd" id="5_vwts6"]
+[ext_resource type="PackedScene" uid="uid://btijepq2l0jgw" path="res://level/head_spawn_point.tscn" id="6_4m0kv"]
 [ext_resource type="PackedScene" uid="uid://ipnc6f3h5cla" path="res://Tank/Gun/gun.tscn" id="6_vw0r6"]
 [ext_resource type="PackedScene" uid="uid://cm2l0hv3qpm83" path="res://Dash/Gun/gun_dash.tscn" id="7_3v56y"]
+[ext_resource type="Script" path="res://level/lap.gd" id="7_su0al"]
+[ext_resource type="Texture2D" uid="uid://dksyyfvrbga7d" path="res://level/lap-line.png" id="8_67lwm"]
+[ext_resource type="Texture2D" uid="uid://bwy1ivh7vnc1k" path="res://level/flag.png" id="8_qhfh0"]
 [ext_resource type="PackedScene" uid="uid://bj1tp7r2eigpt" path="res://Tank/RotationRattle/rotation_rattle.tscn" id="8_y3wgc"]
 [ext_resource type="PackedScene" uid="uid://b4igiyjtxi7in" path="res://Dash/RotationRattle/rotation_rattle_dash.tscn" id="9_ximfd"]
-[ext_resource type="PackedScene" uid="uid://b21qc4qojf82l" path="res://Enemies/head/head.tscn" id="10_g7fv5"]
+[ext_resource type="AudioStream" uid="uid://bxcmg0hk5cthk" path="res://level/human_crowd_soccer_x150_cheer_clap_whistle.mp3" id="10_0poc2"]
 [ext_resource type="PackedScene" uid="uid://bgexubhu8mcty" path="res://Tank/tank.tscn" id="10_pprtn"]
 [ext_resource type="PackedScene" uid="uid://cmlsx3l33xdwy" path="res://level/Obsticles/box.tscn" id="11_bcvsc"]
 [ext_resource type="Script" path="res://dashes.gd" id="11_ff3xx"]
@@ -20,7 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://p7787xmgi0wf" path="res://hp_progress_bar_progress.png" id="14_3digt"]
 [ext_resource type="Texture2D" uid="uid://dby03sxkutu8g" path="res://level/dirt-road.png" id="14_acgx8"]
 [ext_resource type="Texture2D" uid="uid://di47a24f0hc4r" path="res://xp_progress_bar_progress.png" id="14_uy3es"]
+[ext_resource type="PackedScene" uid="uid://bg0sxp2n2473h" path="res://level/target_practice.tscn" id="15_58jb2"]
 [ext_resource type="Script" path="res://level/debug_menu.gd" id="16_r6grv"]
+[ext_resource type="Theme" uid="uid://cxn2lc75ns7uc" path="res://main.tres" id="22_7mqbg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m7ba0"]
 texture = ExtResource("2_43o3h")
@@ -296,7 +302,90 @@ point_count = 18
 radius = 78.3134
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_582fs"]
-size = Vector2(847, 1206)
+size = Vector2(847, 1387)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d82cm"]
+size = Vector2(388, 365.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ykvko"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xmml"]
+atlas = ExtResource("8_qhfh0")
+region = Rect2(0, 0, 9, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4qh4"]
+atlas = ExtResource("8_qhfh0")
+region = Rect2(9, 0, 9, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8ghw"]
+atlas = ExtResource("8_qhfh0")
+region = Rect2(18, 0, 9, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iujgj"]
+atlas = ExtResource("8_qhfh0")
+region = Rect2(27, 0, 9, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crlgu"]
+atlas = ExtResource("8_qhfh0")
+region = Rect2(36, 0, 9, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcywo"]
+atlas = ExtResource("8_qhfh0")
+region = Rect2(45, 0, 9, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4au1n"]
+atlas = ExtResource("8_qhfh0")
+region = Rect2(54, 0, 9, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mnqj"]
+atlas = ExtResource("8_qhfh0")
+region = Rect2(63, 0, 9, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ym6sy"]
+atlas = ExtResource("8_qhfh0")
+region = Rect2(72, 0, 9, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7ye3"]
+atlas = ExtResource("8_qhfh0")
+region = Rect2(81, 0, 9, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_trs73"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xmml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4qh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8ghw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iujgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crlgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcywo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4au1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mnqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ym6sy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7ye3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jgbaw"]
 
@@ -349,8 +438,58 @@ metadata/_edit_lock_ = true
 script = ExtResource("4_lquwa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/CherrySpawner"]
-position = Vector2(-684, 537)
+position = Vector2(-344, 426)
 shape = SubResource("RectangleShape2D_582fs")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ground/CherrySpawner"]
+position = Vector2(358, 365.25)
+shape = SubResource("RectangleShape2D_d82cm")
+
+[node name="HeadSpawnPoint" parent="Ground" instance=ExtResource("6_4m0kv")]
+position = Vector2(812, 113)
+
+[node name="HeadSpawnPoint2" parent="Ground" instance=ExtResource("6_4m0kv")]
+position = Vector2(-354, -48)
+
+[node name="HeadSpawnPoint3" parent="Ground" instance=ExtResource("6_4m0kv")]
+position = Vector2(91, 190)
+
+[node name="HeadSpawnPoint4" parent="Ground" instance=ExtResource("6_4m0kv")]
+position = Vector2(198, -57)
+
+[node name="HeadSpawnPoint5" parent="Ground" instance=ExtResource("6_4m0kv")]
+position = Vector2(-617, 195)
+
+[node name="HeadSpawnPoint6" parent="Ground" instance=ExtResource("6_4m0kv")]
+position = Vector2(-91, 209)
+
+[node name="Lap" type="Area2D" parent="Ground"]
+position = Vector2(-911, 68)
+script = ExtResource("7_su0al")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Lap"]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_ykvko")
+
+[node name="Timer" type="Timer" parent="Ground/Lap"]
+wait_time = 20.0
+one_shot = true
+
+[node name="lapline" type="Sprite2D" parent="Ground/Lap"]
+z_as_relative = false
+position = Vector2(2, 21)
+scale = Vector2(4, 4)
+texture = ExtResource("8_67lwm")
+
+[node name="flag" type="AnimatedSprite2D" parent="Ground/Lap"]
+z_as_relative = false
+position = Vector2(25, -47)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_trs73")
+
+[node name="HumanCrowdSoccerX150CheerClapWhistle" type="AudioStreamPlayer" parent="Ground/Lap"]
+stream = ExtResource("10_0poc2")
+volume_db = -10.0
 
 [node name="OnGround" type="Node2D" parent="."]
 
@@ -432,11 +571,8 @@ position = Vector2(0, 7)
 rotation = 0.875861
 shape = SubResource("RectangleShape2D_8mpgc")
 
-[node name="Head" parent="OnGround" instance=ExtResource("10_g7fv5")]
-position = Vector2(-229, -39)
-
 [node name="Cherry" parent="OnGround" instance=ExtResource("3_kxbee")]
-position = Vector2(-843, 73)
+position = Vector2(-1184, -176)
 
 [node name="Box" parent="OnGround" instance=ExtResource("11_bcvsc")]
 position = Vector2(-245, 74)
@@ -455,6 +591,12 @@ position = Vector2(-185, 74)
 
 [node name="Box6" parent="OnGround" instance=ExtResource("11_bcvsc")]
 position = Vector2(-93, 30)
+
+[node name="target_practice" parent="OnGround" instance=ExtResource("15_58jb2")]
+position = Vector2(-649, -31)
+
+[node name="target_practice2" parent="OnGround" instance=ExtResource("15_58jb2")]
+position = Vector2(1127, 494)
 
 [node name="Tank" parent="." instance=ExtResource("10_pprtn")]
 position = Vector2(-973, 72)
@@ -520,6 +662,27 @@ fill_mode = 1
 texture_under = ExtResource("13_h3kig")
 texture_progress = ExtResource("14_uy3es")
 
+[node name=">>" type="Button" parent="Dashes"]
+offset_left = 141.0
+offset_top = 1.0
+offset_right = 163.0
+offset_bottom = 20.0
+theme = ExtResource("22_7mqbg")
+text = ">>"
+
+[node name="lap" type="Label" parent="Dashes"]
+visible = false
+offset_left = 100.0
+offset_top = 62.0
+offset_right = 177.0
+offset_bottom = 86.0
+theme = ExtResource("22_7mqbg")
+theme_override_colors/font_color = Color(0.453335, 0.0667531, 0.209441, 1)
+theme_override_colors/font_shadow_color = Color(0.728822, 0.728822, 0.728822, 1)
+theme_override_colors/font_outline_color = Color(0.696871, 0.797806, 1, 1)
+theme_override_font_sizes/font_size = 35
+text = "LAP 2!"
+
 [node name="DebugMenu" type="CanvasLayer" parent="."]
 process_mode = 3
 scale = Vector2(0.3, 0.3)
@@ -534,12 +697,13 @@ offset_bottom = 61.0
 text = "get freeze"
 
 [node name="get_gattling" type="Button" parent="DebugMenu"]
-offset_left = 100.0
-offset_top = 83.6667
-offset_right = 185.0
-offset_bottom = 114.667
+offset_left = 70.0
+offset_top = 53.3333
+offset_right = 155.0
+offset_bottom = 84.3336
 text = "get freeze"
 
+[connection signal="body_entered" from="Ground/Lap" to="Ground/Lap" method="_on_body_entered"]
 [connection signal="mouse_entered" from="OnGround/GunPickup" to="OnGround/GunPickup" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="OnGround/GunPickup" to="OnGround/GunPickup" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="OnGround/GunPickup2" to="OnGround/GunPickup2" method="_on_mouse_entered"]
@@ -548,5 +712,7 @@ text = "get freeze"
 [connection signal="mouse_exited" from="OnGround/OnGround/GunPickup" to="OnGround/OnGround/GunPickup" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="OnGround/OnGround/GunPickup2" to="OnGround/OnGround/GunPickup2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="OnGround/OnGround/GunPickup2" to="OnGround/OnGround/GunPickup2" method="_on_mouse_exited"]
+[connection signal="button_down" from="Dashes/>>" to="Dashes" method="_on__button_down"]
+[connection signal="button_up" from="Dashes/>>" to="Dashes" method="_on__button_up"]
 [connection signal="pressed" from="DebugMenu/Button" to="DebugMenu" method="_on_freeze_button_pressed"]
 [connection signal="pressed" from="DebugMenu/get_gattling" to="DebugMenu" method="_on_gattling_button_pressed"]
