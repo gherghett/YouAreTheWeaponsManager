@@ -31,9 +31,9 @@ func _process(delta: float) -> void:
 		var newpos = posmod($Mask/CrankRotation.rotation_degrees, 360)
 		if( newpos > 270-30 and newpos < 270+30):
 			gone_lap = true
-		print("roted ", oldpos, " to ", newpos)
+		#print("roted ", oldpos, " to ", newpos)
 		if(oldpos > 90-50 and oldpos < 90+50 and (not $CrankGroan.playing or gone_lap)):
-			print("sound")
+			#print("sound")
 			gone_lap = false
 			$CrankGroan.play()
 	
@@ -44,7 +44,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	print("entered")
+	#print("entered")
 	if area is MouseFollower:
 		hover = true
 

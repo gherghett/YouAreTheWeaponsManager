@@ -18,6 +18,7 @@ process_mode = 3
 script = ExtResource("1_gysgn")
 
 [node name="LevelUpTimer" type="Timer" parent="."]
+wait_time = 0.2
 one_shot = true
 
 [node name="Upgrades" type="Node" parent="."]

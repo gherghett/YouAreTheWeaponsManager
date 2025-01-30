@@ -38,5 +38,6 @@ func close():
 		items.remove_child(child)
 	$UpgradeBg.stop()
 	$UpgradeChime.stop()
+	Global.dashes.update_next_prev_buttons()
 	
 	

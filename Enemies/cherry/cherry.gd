@@ -41,11 +41,11 @@ func damage():
 	anim.animation_finished.connect(explosion.queue_free)
 	SoundStage.play_at_location(EXPLOSION_SOUND, position)
 	die()
-	print("damage")
+	#print("damage")
 	return 10.0
 
 func destruct(val : float):
-	print("destruct")
+	#print("destruct")
 	took_damage.emit()
 	hp -= val
 	if( hp <= 0):

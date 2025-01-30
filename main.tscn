@@ -7,8 +7,8 @@
 [ext_resource type="Script" path="res://camera_2d.gd" id="6_g1kj1"]
 [ext_resource type="AudioStream" uid="uid://wx50euprq8xq" path="res://Music/JDSherbert - Ambiences Music Pack - Junction Jazz.mp3" id="6_y02el"]
 [ext_resource type="Script" path="res://upgrade_menu.gd" id="8_43ev7"]
+[ext_resource type="AudioStream" uid="uid://g4cwelapliyi" path="res://SoundStage/level_up.mp3" id="10_5hgwp"]
 [ext_resource type="AudioStream" uid="uid://bfvvqxd23vkdg" path="res://felix_blume_fireworks_distant_new_years_eve_mexico.mp3" id="10_ood37"]
-[ext_resource type="AudioStream" uid="uid://bsdkgkvsgtyrl" path="res://zapsplat_multimedia_alert_chime_ring_ping_doorbell_like_tone_112377.mp3" id="11_xt02n"]
 [ext_resource type="Theme" uid="uid://cxn2lc75ns7uc" path="res://main.tres" id="15_ajom0"]
 [ext_resource type="FontFile" uid="uid://c2xcknduc03je" path="res://7pxMONOkeychainn.ttf" id="16_a8ig6"]
 
@@ -197,13 +197,13 @@ uppercase = true
 stream = ExtResource("10_ood37")
 
 [node name="UpgradeChime" type="AudioStreamPlayer2D" parent="CanvasLayer/UpgradeMenu"]
-stream = ExtResource("11_xt02n")
+stream = ExtResource("10_5hgwp")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_y02el")
 volume_db = -6.622
 autoplay = true
-parameters/looping = false
+parameters/looping = true
 
 [connection signal="body_entered" from="Drone" to="Drone" method="_on_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Panel/StartMenu/Button" to="." method="_on_button_pressed"]

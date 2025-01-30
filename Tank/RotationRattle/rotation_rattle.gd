@@ -48,7 +48,8 @@ func _process(delta: float) -> void:
 func fire():
 	ammo -= 1
 	#print("fireing, ammo: ", ammo)
-	SoundStage.play_at_location(MACHINE_GUN, position)
+	var sound = SoundStage.play_at_location(MACHINE_GUN, position)
+	sound.volume_db = -10
 	muzzle_flash()
 	
 	#ray_cast_2d.visible = not ray_cast_2d.visible

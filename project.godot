@@ -23,10 +23,6 @@ SoundStage="*res://SoundStage/sound_stage.tscn"
 Refs="*res://Scripts/refs.gd"
 Util="*res://Scripts/Util.gd"
 
-[debug]
-
-settings/stdout/print_fps=true
-
 [display]
 
 window/size/resizable=false

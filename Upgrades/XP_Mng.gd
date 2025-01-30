@@ -39,6 +39,11 @@ func add_xp_location(xp_to_add, location):
 
 
 func level_up():
+	if Global.hp == 0:
+		return
+	if xp < xp_next_lvl_up:
+		return
+		
 	var diff = xp_next_lvl_up - last_lvl_up
 	last_lvl_up = xp_next_lvl_up
 	xp_next_lvl_up = last_lvl_up + diff * 1.5

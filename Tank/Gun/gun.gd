@@ -18,7 +18,7 @@ var gun_name = "Gun"
 #var is_active = true
 
 func _ready() -> void:
-	print("this ready")
+	#print("this ready")
 	line_2d.points[1] = marker_2d.position
 	muzzle_flash.stop()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://2aj8qorfhwh8"]
+[gd_scene load_steps=78 format=4 uid="uid://2aj8qorfhwh8"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_cp067"]
 [ext_resource type="Texture2D" uid="uid://dl0sdxwadrb1a" path="res://desert.png" id="2_43o3h"]
@@ -28,6 +28,12 @@
 [ext_resource type="PackedScene" uid="uid://bg0sxp2n2473h" path="res://level/target_practice.tscn" id="15_58jb2"]
 [ext_resource type="Script" path="res://level/debug_menu.gd" id="16_r6grv"]
 [ext_resource type="Theme" uid="uid://cxn2lc75ns7uc" path="res://main.tres" id="22_7mqbg"]
+[ext_resource type="Texture2D" uid="uid://b284spfrefxbg" path="res://Dash/right_button_atlas.tres" id="24_cxf1u"]
+[ext_resource type="Texture2D" uid="uid://cff5iycit5a0h" path="res://Dash/change_weapon_button_right_animation.png" id="24_f0mev"]
+[ext_resource type="Texture2D" uid="uid://biymiuf8h7687" path="res://Dash/left_button_atlas.tres" id="25_jh3y3"]
+[ext_resource type="Texture2D" uid="uid://icof2qrt5y1j" path="res://Dash/change_weapon_button_left_animation.png" id="26_3ros7"]
+[ext_resource type="AudioStream" uid="uid://uclskghxyrcd" path="res://Dash/prev_next_button_open_close.mp3" id="32_q88v8"]
+[ext_resource type="AudioStream" uid="uid://dddlv04wpgh2l" path="res://Dash/prev_next_button_close.mp3" id="33_wtkf7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m7ba0"]
 texture = ExtResource("2_43o3h")
@@ -393,8 +399,400 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mpgc"]
 size = Vector2(87.4372, 147)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nu5xd"]
+texture = ExtResource("24_cxf1u")
+region_rect = Rect2(16, 0, 16, 39)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rynj2"]
+texture = ExtResource("24_cxf1u")
+region_rect = Rect2(0, 0, 16, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df0la"]
+atlas = ExtResource("24_cxf1u")
+region = Rect2(16, 0, 16, 39)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c2dvh"]
+texture = SubResource("AtlasTexture_df0la")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b781d"]
+atlas = ExtResource("24_f0mev")
+region = Rect2(64, 0, 16, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47ieg"]
+atlas = ExtResource("24_f0mev")
+region = Rect2(48, 0, 16, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0skd"]
+atlas = ExtResource("24_f0mev")
+region = Rect2(32, 0, 16, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auvgw"]
+atlas = ExtResource("24_f0mev")
+region = Rect2(16, 0, 16, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t63qq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b781d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47ieg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0skd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auvgw")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lqhkd"]
+texture = ExtResource("25_jh3y3")
+region_rect = Rect2(16, 0, 16, 39)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ok654"]
+texture = ExtResource("25_jh3y3")
+region_rect = Rect2(0, 0, 16, 39)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w4sht"]
+texture = ExtResource("25_jh3y3")
+region_rect = Rect2(16, 0, 16, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koiq4"]
+atlas = ExtResource("26_3ros7")
+region = Rect2(64, 0, 16, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twx8r"]
+atlas = ExtResource("26_3ros7")
+region = Rect2(48, 0, 16, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36il2"]
+atlas = ExtResource("26_3ros7")
+region = Rect2(32, 0, 16, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv4b4"]
+atlas = ExtResource("26_3ros7")
+region = Rect2(16, 0, 16, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gqvtx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koiq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twx8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36il2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv4b4")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_wrtll"]
 radius = 5.0
+
+[sub_resource type="Animation" id="Animation_n2hw5"]
+resource_name = "close_left_button"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Prev")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("prev_button")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.366667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"show"
+}, {
+"args": [],
+"method": &"hide"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("prev_button")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_backwards"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.533333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"close_prev"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PrevNextButtonClose")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_b8pe8"]
+resource_name = "close_right_button"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("next_button")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"show"
+}, {
+"args": [&""],
+"method": &"play_backwards"
+}, {
+"args": [],
+"method": &"hide"
+}, {
+"args": [],
+"method": &"hide"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Next")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.533333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"close_next"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("PrevNextButtonOpen")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PrevNextButtonClose")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_io1vn"]
+resource_name = "open_left_button"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Prev")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.433333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("prev_button")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"show"
+}, {
+"args": [&"", 1.0, false],
+"method": &"play"
+}, {
+"args": [],
+"method": &"hide"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.533333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"open_prev"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PrevNextButtonOpen")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qfhkb"]
+resource_name = "open_right_button"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Next")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.466667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("next_button")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"show"
+}, {
+"args": [&"", 1.0, false],
+"method": &"play"
+}, {
+"args": [],
+"method": &"hide"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.533333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"open_next"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PrevNextButtonOpen")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_74k2v"]
+_data = {
+"close_left_button": SubResource("Animation_n2hw5"),
+"close_right_button": SubResource("Animation_b8pe8"),
+"open_left_button": SubResource("Animation_io1vn"),
+"open_right_button": SubResource("Animation_qfhkb")
+}
 
 [node name="level2" type="Node2D"]
 script = ExtResource("1_cp067")
@@ -635,21 +1033,38 @@ unique_name_in_owner = true
 script = ExtResource("11_ff3xx")
 
 [node name="Next" type="Button" parent="Dashes"]
-offset_left = 261.0
-offset_top = 86.0
-offset_right = 346.0
-offset_bottom = 156.0
-scale = Vector2(0.2, 0.2)
-text = "next"
+visible = false
+offset_left = 274.0
+offset_top = 68.0
+offset_right = 290.0
+offset_bottom = 111.0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_nu5xd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rynj2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_c2dvh")
+
+[node name="next_button" type="AnimatedSprite2D" parent="Dashes"]
+visible = false
+position = Vector2(274, 68)
+sprite_frames = SubResource("SpriteFrames_t63qq")
+offset = Vector2(8, 19.5)
 
 [node name="Prev" type="Button" parent="Dashes"]
-offset_left = 24.0
-offset_top = 86.0
-offset_right = 99.0
-offset_bottom = 166.0
-scale = Vector2(0.2, 0.2)
-text = "Prev
-"
+visible = false
+offset_top = 68.0
+offset_right = 16.0
+offset_bottom = 111.0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_lqhkd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ok654")
+theme_override_styles/normal = SubResource("StyleBoxTexture_w4sht")
+
+[node name="prev_button" type="AnimatedSprite2D" parent="Dashes"]
+visible = false
+position = Vector2(0, 68)
+scale = Vector2(1, 1.10256)
+sprite_frames = SubResource("SpriteFrames_gqvtx")
+offset = Vector2(8, 19.5)
 
 [node name="Mouse_follower" type="Area2D" parent="Dashes"]
 unique_name_in_owner = true
@@ -685,6 +1100,7 @@ offset_left = 141.0
 offset_top = 1.0
 offset_right = 163.0
 offset_bottom = 20.0
+focus_mode = 0
 theme = ExtResource("22_7mqbg")
 text = ">>"
 
@@ -700,6 +1116,25 @@ theme_override_colors/font_shadow_color = Color(0.728822, 0.728822, 0.728822, 1)
 theme_override_colors/font_outline_color = Color(0.696871, 0.797806, 1, 1)
 theme_override_font_sizes/font_size = 35
 text = "LAP 2!"
+
+[node name="NextButtonAnimation" type="AnimationPlayer" parent="Dashes"]
+libraries = {
+"": SubResource("AnimationLibrary_74k2v")
+}
+
+[node name="PrevButtonAnimations" type="AnimationPlayer" parent="Dashes"]
+libraries = {
+"": SubResource("AnimationLibrary_74k2v")
+}
+
+[node name="PrevNextButtonOpen" type="AudioStreamPlayer" parent="Dashes"]
+stream = ExtResource("32_q88v8")
+volume_db = -11.08
+
+[node name="PrevNextButtonClose" type="AudioStreamPlayer" parent="Dashes"]
+stream = ExtResource("33_wtkf7")
+volume_db = -11.0
+pitch_scale = 1.4
 
 [node name="DebugMenu" type="CanvasLayer" parent="."]
 process_mode = 3
