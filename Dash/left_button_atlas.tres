@@ -1,0 +1,6 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://biymiuf8h7687"]
+
+[ext_resource type="Texture2D" uid="uid://icof2qrt5y1j" path="res://Dash/change_weapon_button_left_animation.png" id="1_m7kd2"]
+
+[resource]
+atlas = ExtResource("1_m7kd2")

@@ -15,7 +15,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if go:
 		position.x += speed * delta
-		print("going")
+		#print("going")
 		if position.x >= length:
 			position.x = length
 			go = false
@@ -39,7 +39,7 @@ func impact():
 			body.destruct(1000.0)
 	var bomb = BOMB.instantiate()
 	bomb.global_position = global_position
-	print("impact")
+	#print("impact")
 	Global.main.smoke.add_child(bomb)
 	var groundmark = GROUND_MARK.instantiate()
 	groundmark.global_position = global_position

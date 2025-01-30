@@ -7,6 +7,7 @@ func _ready() -> void:
 
 func _on_freeze_button_pressed() -> void:
 	Global.xp_mng.add_debug("Freeze")
+	Global.dashes.update_next_prev_buttons()
 	
 func _process(delta: float) -> void:
 	if(Input.is_action_just_pressed("invincible")):
@@ -18,3 +19,5 @@ func _process(delta: float) -> void:
 
 func _on_gattling_button_pressed() -> void:
 	Global.xp_mng.add_debug("Gattling")
+	Global.dashes.update_next_prev_buttons()
+	

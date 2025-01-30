@@ -32,18 +32,26 @@ func _process(delta: float) -> void:
 			square_swirl.material.set("shader_parameter/brightness_cutoff", distance/20)
 			square_swirl.material.set("shader_parameter/alpha_of_darkness", distance/25)
 			$CanvasLayer/Title.modulate.a =  1 - (distance - 13) / 12
+			$Winners.volume_db = -10
+			if( distance < 18):
+				if not $Winners.playing:
+						$Winners.play()
 			if(distance < 12):
 				$CanvasLayer/Title.modulate.a =  (distance) / 12
 				#color_rect_2.material.set("shader_parameter/low", 1-distance/12)
 				color_rect.color.a = distance/12
+				
+				if distance < 5:
+					$Winners.volume_db = -100 * (1-(distance/5)) - 10
+				#$Winners.volume_db  =
 			$CanvasLayer/Desert.modulate.a = 1 - distance/25
 			$CanvasLayer/ShowCredits.modulate.a  = distance/25
-			print(1-distance/25)
+			#print(1-distance/25)
 		else:
 			color_rect.color.a = 1.0
 			$CanvasLayer/Desert.modulate.a = 0.0
 			$CanvasLayer/Title.modulate.a = 0.0
-			
+			$Winners.playing = false
 			
 	else:
 		music.pitch_scale = 1.0

@@ -97,5 +97,5 @@ func enter_state(new_state : Refs.TankState):
 			pass
 		Refs.TankState.BLOCKED:
 			blocked_voice.play()
-			print("entering blocked")
+			#print("entering blocked")
 	Global.tank_state = new_state

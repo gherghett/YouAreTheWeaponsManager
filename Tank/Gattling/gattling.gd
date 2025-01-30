@@ -24,24 +24,18 @@ var trigger = false
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 			
-	#var deg = rot_speed_step * (rotating_speed_setting-4) * delta
-	#var rad = deg_to_rad(deg)
-	#ray_cast_2d.rotate(rad)
-	##print("rotated ", deg, "in rad ", rad)
-	#
-	#if(muzzle > 0):
-		#muzzle -= delta
-		#if(muzzle < 0):
-			#muzzle_animation.visible = false
-			#line_2d.visible = false
-			#line_2d.points[1].x = 128.0
-	trigger = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
-			
 	timer_between_shots -= delta
 	if trigger:
 		if (timer_between_shots <= 0.0 ):
 			fire()
 			timer_between_shots = fire_rate
+	
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("shoot"): #TODO add delay or smth
+		#print("from process")
+		trigger = true
+	if event.is_action_released("shoot"):
+		trigger = false
 		
 		
 #func _input(event: InputEvent) -> void:

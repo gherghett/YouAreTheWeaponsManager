@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cn8ogm8pv3y3i"]
+[gd_scene load_steps=16 format=3 uid="uid://cn8ogm8pv3y3i"]
 
 [ext_resource type="Script" path="res://MainMenu/main_menu.gd" id="1_wvtpv"]
 [ext_resource type="Shader" path="res://MainMenu/hyper.gdshader" id="2_l6yyb"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://vatvxc4hpf11" path="res://MainMenu/title.png" id="7_8yhab"]
 [ext_resource type="Texture2D" uid="uid://dl0sdxwadrb1a" path="res://desert.png" id="7_mhyp3"]
 [ext_resource type="Shader" path="res://MainMenu/square_swirl.gdshader" id="8_jh81s"]
+[ext_resource type="AudioStream" uid="uid://b3muuc7w8np0w" path="res://level/audio_hero_Winners-Circle_SIPML_D-0227.mp3" id="12_sl8c3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_evrrw"]
 shader = ExtResource("2_l6yyb")
@@ -139,6 +140,9 @@ stream = ExtResource("5_ssvnr")
 volume_db = -10.0
 autoplay = true
 parameters/looping = true
+
+[node name="Winners" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_sl8c3")
 
 [connection signal="button_down" from="CanvasLayer/ShowCredits" to="CanvasLayer/Credits" method="show"]
 [connection signal="button_up" from="CanvasLayer/ShowCredits" to="CanvasLayer/Credits" method="hide"]

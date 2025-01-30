@@ -11,4 +11,4 @@ func _ready() -> void:
 func update_pin(ammo):
 	current = ammo
 	$Pin.rotation_degrees =  float(current)/float(max) * pin_rotation_max
-	print($Pin.rotation_degrees)
+	#print($Pin.rotation_degrees)
