@@ -15,5 +15,6 @@ func _process(delta: float) -> void:
 		for body in bodies:
 			if body.has_method("destruct"):
 				body.destruct(bullet_damage)
+
 				queue_free()
 				break

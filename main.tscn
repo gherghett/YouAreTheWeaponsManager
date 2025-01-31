@@ -203,8 +203,7 @@ stream = ExtResource("10_5hgwp")
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_y02el")
 volume_db = -6.622
-autoplay = true
-parameters/looping = true
+parameters/looping = false
 
 [connection signal="body_entered" from="Drone" to="Drone" method="_on_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Panel/StartMenu/Button" to="." method="_on_button_pressed"]

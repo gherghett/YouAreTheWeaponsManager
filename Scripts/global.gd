@@ -17,6 +17,8 @@ var xp_mng : XPManager
 var upgrade_menu : Node
 var debug
 
+var max_hp = 130.0
+
 enum State {
 	pre,
 	started, 
@@ -27,7 +29,7 @@ enum State {
 var current_state = State.pre
 var tank_state : Refs.TankState = Refs.TankState.RUNNING
 
-var hp = 100.0 :
+var hp : float = max_hp :
 	set( new_val ):
 		if not debug.invincible:
 			hp = new_val

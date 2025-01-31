@@ -28,6 +28,8 @@ const DRAGON_BODY = preload("res://Enemies/dragon/dragon_body.tscn")
 var body_parts
 var length = 20
 
+var state : Refs.EnemyStates = Refs.EnemyStates.RUNNING 
+
 func _ready() -> void:
 	for i in range(length):
 		var body = DRAGON_BODY.instantiate()
@@ -57,8 +59,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	update_movement_direction(delta)
-	update_sprite_animation()
+	if state == Refs.EnemyStates.RUNNING:
+		update_movement_direction(delta)
+		update_sprite_animation()
 
 func update_movement_direction(delta: float) -> void:
 	time_passed += delta * 0.5
@@ -76,8 +79,9 @@ func update_sprite_animation() -> void:
 	$sprite.frame = int(head_direction)
 
 func _physics_process(delta: float) -> void:
-	apply_movement(delta)
-	move_body_parts(delta)
+	if state == Refs.EnemyStates.RUNNING:
+		apply_movement(delta)
+		move_body_parts(delta)
 
 func apply_movement(delta: float) -> void:
 	velocity = Vector2.RIGHT.rotated(movement_direction) * speed

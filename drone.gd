@@ -52,6 +52,8 @@ func fire():
 		var bodies = Util.distinct(get_overlapping_bodies())
 		for body in bodies + areas:
 			#print("a body, ", body)
+			if body.has_method("clear_mine"):
+				body.clear_mine()
 			if body.has_method("destruct"):
 				shoot_line.points[1] = body.global_position - $Node.global_position
 				body.destruct(10)

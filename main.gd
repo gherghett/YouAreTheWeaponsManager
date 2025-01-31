@@ -93,7 +93,7 @@ func _on_restart_button_pressed() -> void:
 	smoke = $level/Smoke
 	path_follow_2d = $level/Path2D/PathFollow2D
 	canvas_layer = $CanvasLayer
-	Global.hp = 100.0 #TODO
+	Global.hp = Global.max_hp #TODO
 	
 	enter_started()
 

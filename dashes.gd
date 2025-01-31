@@ -18,13 +18,15 @@ var prev_open = false
 func _ready() -> void:
 	$Next.pressed.connect(next)
 	$Prev.pressed.connect(prev)
+	%HealthBar.max_value = Global.max_hp
 	Global.dashes = self
 
 func next():
 	dash_index += 1
 	dash_index = clamp(dash_index, 0, Global.gun_manager.Installed.size()-1)
 	update_active_dashes()
-	leftarrow.stop_arrow()
+	if dash_index == Global.gun_manager.Installed.size()-1:
+		leftarrow.stop_arrow()
 	
 func prev():
 	dash_index -= 1
