@@ -9,6 +9,7 @@ var scubbing_acceleration = 0.3;
 @onready var prev_button: Button = $Prev
 @onready var next_button_animation: AnimationPlayer = $NextButtonAnimation
 @onready var prev_button_animations: AnimationPlayer = $PrevButtonAnimations
+@onready var leftarrow: AnimatedSprite2D = $leftarrow
 
 var next_open = false
 var prev_open = false
@@ -23,6 +24,7 @@ func next():
 	dash_index += 1
 	dash_index = clamp(dash_index, 0, Global.gun_manager.Installed.size()-1)
 	update_active_dashes()
+	leftarrow.stop_arrow()
 	
 func prev():
 	dash_index -= 1

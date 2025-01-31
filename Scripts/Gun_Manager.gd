@@ -26,3 +26,6 @@ func add(weapon : PackedScene, dash : PackedScene) -> void:
 	Dashs[d.name] = d
 	Global.dashes.find_child("DashesContainer").add_child(d)
 	d.connect_weapon(w)
+	
+	if len(Installed) > 1:
+		Global.dashes.leftarrow.start()

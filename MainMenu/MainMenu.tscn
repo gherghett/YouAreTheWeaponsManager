@@ -8,7 +8,7 @@
 [ext_resource type="Theme" uid="uid://cxn2lc75ns7uc" path="res://main.tres" id="3_v4p4v"]
 [ext_resource type="Texture2D" uid="uid://cjpkvtjwlyl6d" path="res://pattern.png" id="4_ja14l"]
 [ext_resource type="AudioStream" uid="uid://xosfhysdibqx" path="res://MainMenu/menu_2.mp3" id="5_ssvnr"]
-[ext_resource type="Texture2D" uid="uid://dnmy17to7lsbr" path="res://MainMenu/title_wo_beams.png" id="7_k3b7p"]
+[ext_resource type="Texture2D" uid="uid://drr18g31x56xm" path="res://MainMenu/title_wo_beams_2.png" id="7_3vgpg"]
 [ext_resource type="Texture2D" uid="uid://dl0sdxwadrb1a" path="res://desert.png" id="7_mhyp3"]
 [ext_resource type="Shader" path="res://MainMenu/square_swirl.gdshader" id="8_jh81s"]
 [ext_resource type="Texture2D" uid="uid://diwru6xklpidm" path="res://MainMenu/title_beams_mask.png" id="8_udhua"]
@@ -91,7 +91,7 @@ texture = ExtResource("7_mhyp3")
 [node name="Title" type="Sprite2D" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(176, 54)
-texture = ExtResource("7_k3b7p")
+texture = ExtResource("7_3vgpg")
 
 [node name="BeamsMask" type="Sprite2D" parent="CanvasLayer/Title"]
 show_behind_parent = true
