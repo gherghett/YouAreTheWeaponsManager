@@ -6,11 +6,13 @@ enum Becomes {
 }
 
 @export var becomes : Becomes = Becomes.MINE
+@export var traveling_dir : Refs.Direction = Refs.Direction.E
+@export var follow_tank : bool = false
 
 signal took_damage
 var hp = 30.0
 var head_direction : Refs.Direction = Refs.Direction.S
-var speed = 9200
+var speed = 120
 const textures_for_body = {
 	Becomes.CHERRY: preload("res://Enemies/dragon/drangon_body_red.png"),
 	Becomes.MINE : preload("res://Enemies/dragon/drangon_body.png"),
@@ -25,6 +27,7 @@ var movement_direction: float = 0.5  # Initial value
 const DRAGON_BODY = preload("res://Enemies/dragon/dragon_body.tscn")
 var body_parts
 var length = 20
+
 func _ready() -> void:
 	for i in range(length):
 		var body = DRAGON_BODY.instantiate()
@@ -52,25 +55,62 @@ func _ready() -> void:
 		#shader.set_shader_parameter("size", oscillating_value)
 		#print(oscillating_value)  # Debugging: check t
 
+
 func _process(delta: float) -> void:
+	update_movement_direction(delta)
+	update_sprite_animation()
+
+func update_movement_direction(delta: float) -> void:
 	time_passed += delta * 0.5
-	movement_direction = PI*sin(time_passed)
+	var base_direction: float
+	
+	if follow_tank:
+		base_direction = (Global.tank.global_position - global_position).angle()
+	else:
+		base_direction = Refs.directionInRads[traveling_dir]
+	
+	movement_direction = base_direction + 3 * sin(time_passed) - PI
 	head_direction = Util.rad_to_8dir(movement_direction)
+
+func update_sprite_animation() -> void:
 	$sprite.frame = int(head_direction)
-	
-	
+
 func _physics_process(delta: float) -> void:
-	velocity = delta * Vector2.RIGHT.rotated(movement_direction) * speed
+	apply_movement(delta)
+	move_body_parts(delta)
+
+func apply_movement(delta: float) -> void:
+	velocity = Vector2.RIGHT.rotated(movement_direction) * speed
 	move_and_slide()
-	var parent = self
+
+func move_body_parts(delta: float) -> void:
 	clear_body_parts()
-	for b : CharacterBody2D in body_parts:
-		var diff = parent.global_position - b.global_position
-		var dir = diff.normalized()
-		var move_speed = clamp((diff/40.0).length_squared(), 0.0, 1.0)
-		b.velocity = dir * delta * speed * move_speed
-		b.move_and_slide()
-		parent = b
+	var parent_position = global_position
+
+	for body_part in body_parts:
+		var displacement = parent_position - body_part.global_position
+		var direction = displacement.normalized()
+		var move_speed_factor = clamp((displacement / 40.0).length_squared(), 0.0, 1.0)
+
+		body_part.velocity = direction * speed * move_speed_factor
+		body_part.move_and_slide()
+
+		if check_collisions(body_part):
+			return
+			
+		parent_position = body_part.global_position
+
+func check_collisions(body_part: CharacterBody2D) -> bool:
+	for i in range(body_part.get_slide_collision_count()):
+		var collision = body_part.get_slide_collision(i)
+		var collider = collision.get_collider()
+		
+		if collider == Global.tank:
+			body_part.explode()
+			return true  # Stop further processing
+	
+	return false
+
 		
 func destruct(val):
 	took_damage.emit()
@@ -89,7 +129,7 @@ func clear_body_parts():
 	for i in indicies_to_remove:
 		body_parts.remove_at(i)
 		
-		
+
 func die():
 	clear_body_parts()
 	for b in body_parts:

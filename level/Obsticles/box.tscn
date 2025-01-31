@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vsdst"]
 size = Vector2(38, 39.5)
 
-[node name="Box" type="RigidBody2D" groups=["pushable"]]
+[node name="Box" type="RigidBody2D" groups=["pushable", "turn_into"]]
 position = Vector2(-781, 52)
 collision_layer = 4
 collision_mask = 7
