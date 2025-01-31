@@ -18,7 +18,7 @@ func _ready() -> void:
 	Global.xp_mng = XP_MANAGER.instantiate()
 	add_child(Global.xp_mng)
 	Global.tank.enter_state(Refs.TankState.RUNNING)
-	%UpgradeMenu.visible = false #sometimes when restarting this is an issue
+	#%UpgradeMenu.visible = false #sometimes when restarting this is an issue
 	
 func load_lap():
 	var spawnpoints = get_tree().get_nodes_in_group("headspawnpoint")
