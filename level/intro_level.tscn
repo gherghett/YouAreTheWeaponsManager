@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://2aj8qorfhwh8"]
+[gd_scene load_steps=84 format=4 uid="uid://2aj8qorfhwh8"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_cp067"]
 [ext_resource type="Texture2D" uid="uid://dl0sdxwadrb1a" path="res://desert.png" id="2_43o3h"]
@@ -28,8 +28,11 @@
 [ext_resource type="PackedScene" uid="uid://bg0sxp2n2473h" path="res://level/target_practice.tscn" id="15_58jb2"]
 [ext_resource type="Script" path="res://level/debug_menu.gd" id="16_r6grv"]
 [ext_resource type="Theme" uid="uid://cxn2lc75ns7uc" path="res://main.tres" id="22_7mqbg"]
+[ext_resource type="Texture2D" uid="uid://d1xifx48fifqf" path="res://Dash/arrow.png" id="23_7ahdr"]
 [ext_resource type="Texture2D" uid="uid://b284spfrefxbg" path="res://Dash/right_button_atlas.tres" id="24_cxf1u"]
 [ext_resource type="Texture2D" uid="uid://cff5iycit5a0h" path="res://Dash/change_weapon_button_right_animation.png" id="24_f0mev"]
+[ext_resource type="Script" path="res://level/leftarrow.gd" id="24_ld6cy"]
+[ext_resource type="Shader" path="res://level/radial_gradient.gdshader" id="25_1m0xl"]
 [ext_resource type="Texture2D" uid="uid://biymiuf8h7687" path="res://Dash/left_button_atlas.tres" id="25_jh3y3"]
 [ext_resource type="Texture2D" uid="uid://icof2qrt5y1j" path="res://Dash/change_weapon_button_left_animation.png" id="26_3ros7"]
 [ext_resource type="AudioStream" uid="uid://uclskghxyrcd" path="res://Dash/prev_next_button_open_close.mp3" id="32_q88v8"]
@@ -398,6 +401,42 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mpgc"]
 size = Vector2(87.4372, 147)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jva32"]
+atlas = ExtResource("23_7ahdr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h1f5b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jva32")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_774yo"]
+shader = ExtResource("25_1m0xl")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/size = 1.044
+shader_parameter/squishness = Vector2(1, 1)
+shader_parameter/color1 = Color(1, 1, 1, 1)
+shader_parameter/color2 = Color(1, 1, 1, 1)
+shader_parameter/color3 = Color(0.909804, 0.447059, 0, 1)
+shader_parameter/color4 = Color(0, 0, 0.639216, 0)
+shader_parameter/color5 = Color(0.792157, 0, 0, 0)
+shader_parameter/color6 = Color(1, 1, 1, 0)
+shader_parameter/step1 = 0.159
+shader_parameter/step2 = 0.182
+shader_parameter/step3 = 0.233
+shader_parameter/step4 = 0.264
+shader_parameter/step5 = 0.265
+shader_parameter/step6 = 0.266
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nu5xd"]
 texture = ExtResource("24_cxf1u")
@@ -1031,6 +1070,19 @@ position = Vector2(-344, 314)
 [node name="Dashes" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 script = ExtResource("11_ff3xx")
+
+[node name="leftarrow" type="AnimatedSprite2D" parent="Dashes"]
+visible = false
+position = Vector2(245, 86)
+sprite_frames = SubResource("SpriteFrames_h1f5b")
+script = ExtResource("24_ld6cy")
+
+[node name="ColorRect" type="ColorRect" parent="Dashes/leftarrow"]
+material = SubResource("ShaderMaterial_774yo")
+offset_left = 13.0
+offset_top = -35.0
+offset_right = 62.0
+offset_bottom = 37.0
 
 [node name="Next" type="Button" parent="Dashes"]
 visible = false
