@@ -18,6 +18,7 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	%Tank.rotate(delta * spinning_speed)
+	$CanvasLayer/Title/BeamsMask/Beams.rotate(delta * spinning_speed * 2.5)
 	
 	var rect = start_rect.get_global_rect()
 	var mouse_position = get_viewport().get_mouse_position()
@@ -54,6 +55,10 @@ func _process(delta: float) -> void:
 			$Winners.playing = false
 			
 	else:
+		color_rect.color.a = 1.0
+		$CanvasLayer/Desert.modulate.a = 0.0
+		$CanvasLayer/Title.modulate.a = 0.0
+		$Winners.playing = false
 		music.pitch_scale = 1.0
 		spinning_speed = full_spinning_speed
 		time += delta

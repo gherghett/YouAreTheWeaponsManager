@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bwy1ivh7vnc1k" path="res://level/flag.png" id="8_qhfh0"]
 [ext_resource type="PackedScene" uid="uid://bj1tp7r2eigpt" path="res://Tank/RotationRattle/rotation_rattle.tscn" id="8_y3wgc"]
 [ext_resource type="PackedScene" uid="uid://b4igiyjtxi7in" path="res://Dash/RotationRattle/rotation_rattle_dash.tscn" id="9_ximfd"]
-[ext_resource type="AudioStream" uid="uid://bxcmg0hk5cthk" path="res://level/human_crowd_soccer_x150_cheer_clap_whistle.mp3" id="10_0poc2"]
+[ext_resource type="AudioStream" uid="uid://di4vy1p2fqnk5" path="res://level/human_crowd_soccer_x150_cheer_clap_whistle.mp3" id="10_0poc2"]
 [ext_resource type="PackedScene" uid="uid://bgexubhu8mcty" path="res://Tank/tank.tscn" id="10_pprtn"]
 [ext_resource type="PackedScene" uid="uid://cmlsx3l33xdwy" path="res://level/Obsticles/box.tscn" id="11_bcvsc"]
 [ext_resource type="Script" path="res://dashes.gd" id="11_ff3xx"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cn8ogm8pv3y3i"]
+[gd_scene load_steps=18 format=3 uid="uid://cn8ogm8pv3y3i"]
 
 [ext_resource type="Script" path="res://MainMenu/main_menu.gd" id="1_wvtpv"]
 [ext_resource type="Shader" path="res://MainMenu/hyper.gdshader" id="2_l6yyb"]
@@ -8,9 +8,11 @@
 [ext_resource type="Theme" uid="uid://cxn2lc75ns7uc" path="res://main.tres" id="3_v4p4v"]
 [ext_resource type="Texture2D" uid="uid://cjpkvtjwlyl6d" path="res://pattern.png" id="4_ja14l"]
 [ext_resource type="AudioStream" uid="uid://xosfhysdibqx" path="res://MainMenu/menu_2.mp3" id="5_ssvnr"]
-[ext_resource type="Texture2D" uid="uid://vatvxc4hpf11" path="res://MainMenu/title.png" id="7_8yhab"]
+[ext_resource type="Texture2D" uid="uid://dnmy17to7lsbr" path="res://MainMenu/title_wo_beams.png" id="7_k3b7p"]
 [ext_resource type="Texture2D" uid="uid://dl0sdxwadrb1a" path="res://desert.png" id="7_mhyp3"]
 [ext_resource type="Shader" path="res://MainMenu/square_swirl.gdshader" id="8_jh81s"]
+[ext_resource type="Texture2D" uid="uid://diwru6xklpidm" path="res://MainMenu/title_beams_mask.png" id="8_udhua"]
+[ext_resource type="Texture2D" uid="uid://de1p84qyikwrc" path="res://MainMenu/title_beams.png" id="9_5rim0"]
 [ext_resource type="AudioStream" uid="uid://b3muuc7w8np0w" path="res://level/audio_hero_Winners-Circle_SIPML_D-0227.mp3" id="12_sl8c3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_evrrw"]
@@ -89,7 +91,31 @@ texture = ExtResource("7_mhyp3")
 [node name="Title" type="Sprite2D" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(176, 54)
-texture = ExtResource("7_8yhab")
+texture = ExtResource("7_k3b7p")
+
+[node name="BeamsMask" type="Sprite2D" parent="CanvasLayer/Title"]
+show_behind_parent = true
+clip_children = 1
+texture = ExtResource("8_udhua")
+
+[node name="Beams" type="Sprite2D" parent="CanvasLayer/Title/BeamsMask"]
+position = Vector2(-8.99999, 64)
+rotation = -0.527044
+offset = Vector2(12.3563, -65.2098)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Title/BeamsMask/Beams"]
+show_behind_parent = true
+position = Vector2(3.96326, -6.52859)
+texture = ExtResource("9_5rim0")
+offset = Vector2(-1, -65)
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/Title/BeamsMask/Beams"]
+show_behind_parent = true
+position = Vector2(4.96326, -6.52859)
+rotation = 3.13304
+scale = Vector2(1, 1)
+texture = ExtResource("9_5rim0")
+offset = Vector2(-2, -65)
 
 [node name="Tank" parent="CanvasLayer" instance=ExtResource("2_u2kgr")]
 unique_name_in_owner = true

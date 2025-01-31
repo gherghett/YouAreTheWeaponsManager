@@ -175,6 +175,7 @@ offset_right = 111.0
 offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("15_ajom0")
 script = ExtResource("8_43ev7")
 
 [node name="Items" type="VBoxContainer" parent="CanvasLayer/UpgradeMenu"]
@@ -210,3 +211,4 @@ parameters/looping = true
 [connection signal="pressed" from="CanvasLayer/Panel/RestartMenu/Button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/PauseMenu/Continue" to="." method="enter_started"]
 [connection signal="pressed" from="CanvasLayer/Panel/PauseMenu/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="finished" from="MusicPlayer" to="MusicPlayer" method="play"]
