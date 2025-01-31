@@ -5,20 +5,26 @@
 [ext_resource type="PackedScene" uid="uid://dt0o0yxrt0rkl" path="res://blink_on_damage.tscn" id="3_xngg3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y5ipu"]
-radius = 2.79508
+radius = 2.5
 
 [node name="DragpnBody" type="CharacterBody2D"]
 show_behind_parent = true
 top_level = true
 scale = Vector2(4, 4)
-collision_layer = 2
+collision_layer = 10
 collision_mask = 5
+motion_mode = 1
+floor_stop_on_slope = false
+floor_block_on_wall = false
+platform_on_leave = 2
+platform_floor_layers = 4294901760
 script = ExtResource("1_01ao7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_epmxb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("CircleShape2D_y5ipu")
 
 [node name="BlinkOnDamage" parent="." instance=ExtResource("3_xngg3")]

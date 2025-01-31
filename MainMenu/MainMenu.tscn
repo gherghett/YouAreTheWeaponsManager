@@ -113,7 +113,6 @@ offset = Vector2(-1, -65)
 show_behind_parent = true
 position = Vector2(4.96326, -6.52859)
 rotation = 3.13304
-scale = Vector2(1, 1)
 texture = ExtResource("9_5rim0")
 offset = Vector2(-2, -65)
 

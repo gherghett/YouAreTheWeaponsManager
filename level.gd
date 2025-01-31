@@ -12,6 +12,7 @@ const XP_MANAGER = preload("res://Upgrades/XPManager.tscn")
 const HEAD = preload("res://Enemies/head/head.tscn")
 const BOX = preload("res://level/Obsticles/box.tscn")
 const MINE = preload("res://level/mine/mine.tscn")
+const CHERRY = preload("res://Enemies/cherry/cherry.tscn")
 
 func _ready() -> void:
 	Global.level = self
@@ -22,6 +23,15 @@ func _ready() -> void:
 	#%UpgradeMenu.visible = false #sometimes when restarting this is an issue
 	
 func load_lap():
+	if (lap % 3 == 0) or true:
+		var things_to_turn = get_tree().get_nodes_in_group("turn_into")
+		for thing in things_to_turn:
+			var pos = thing.global_position
+			thing.queue_free()
+			var cherry = CHERRY.instantiate()
+			Global.main.on_ground.add_child(cherry)
+			cherry.global_position = pos
+			
 	var spawnpoints = get_tree().get_nodes_in_group("headspawnpoint")
 	print("Its lap ", Global.level.lap, " spawning ", Global.level.lap-1, " heads." )
 	for i in range(Global.level.lap-1):
@@ -34,25 +44,27 @@ func load_lap():
 		Global.main.ground.add_child(head)
 	
 	var boxspawnpoints = get_tree().get_nodes_in_group("boxspawnpoint")
-	for i in range(randi_range(Global.level.lap, Global.level.lap+3)):
+	for i in range(randi_range(1, Global.level.lap+2)):
 		if len(boxspawnpoints) > 0:
 			var spawn = boxspawnpoints.pick_random()
 			boxspawnpoints.remove_at(boxspawnpoints.bsearch(spawn))
-			for j in range(Global.level.lap*2*randi_range(1,3)):
+			for j in range(randi_range(0,1)*Global.level.lap*2*randi_range(1,3)):
 				var box : RigidBody2D = BOX.instantiate()
 				box.global_position = spawn.global_position + (Vector2.RIGHT * randf()*100*3).rotated(randf()*2*PI)
 				Global.main.on_ground.add_child(box)
 				while box.get_contact_count() > 0:
 					box.position.x += 20
 	
+			
 	#mines
-	if(lap > 1):
+	if(lap > 0):
 		var numberofmines = 3 + int(lap * 1.5)
 		for i in range(numberofmines):
 			var mine_position = Util.get_position_along_path($Path2D, randf()) + $Path2D.position
 			var mine = MINE.instantiate()
 			mine.global_position = mine_position
 			Global.main.ground.add_child(mine)
+			
 		
 
 func _process(delta: float) -> void:

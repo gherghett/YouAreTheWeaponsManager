@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=4 uid="uid://2aj8qorfhwh8"]
+[gd_scene load_steps=87 format=4 uid="uid://2aj8qorfhwh8"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_cp067"]
 [ext_resource type="Texture2D" uid="uid://dl0sdxwadrb1a" path="res://desert.png" id="2_43o3h"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://1ntdn636srko" path="res://level/boxspawnpoint.tscn" id="11_n3n8h"]
 [ext_resource type="Script" path="res://mouse_followe.gd" id="12_7hyed"]
 [ext_resource type="PackedScene" uid="uid://boxqy6x1hbrb3" path="res://Dash/Freeze/static_destructable.tscn" id="12_54uib"]
+[ext_resource type="Script" path="res://level/dragon_spawner_east.gd" id="13_gyyhl"]
 [ext_resource type="Texture2D" uid="uid://vw5ou8i4qsu1" path="res://xp_progress_bar_under.png" id="13_h3kig"]
 [ext_resource type="Script" path="res://level/path_2d.gd" id="13_qvs2w"]
 [ext_resource type="Texture2D" uid="uid://p7787xmgi0wf" path="res://hp_progress_bar_progress.png" id="14_3digt"]
@@ -28,7 +29,6 @@
 [ext_resource type="PackedScene" uid="uid://bg0sxp2n2473h" path="res://level/target_practice.tscn" id="15_58jb2"]
 [ext_resource type="Script" path="res://level/debug_menu.gd" id="16_r6grv"]
 [ext_resource type="PackedScene" uid="uid://5m0t03xcgkt1" path="res://level/mine/mine.tscn" id="20_6jx5s"]
-[ext_resource type="PackedScene" uid="uid://rh7dvidhucxx" path="res://Enemies/dragon/dragon_head.tscn" id="21_re2kx"]
 [ext_resource type="Theme" uid="uid://cxn2lc75ns7uc" path="res://main.tres" id="22_7mqbg"]
 [ext_resource type="Texture2D" uid="uid://d1xifx48fifqf" path="res://Dash/arrow.png" id="23_7ahdr"]
 [ext_resource type="Texture2D" uid="uid://b284spfrefxbg" path="res://Dash/right_button_atlas.tres" id="24_cxf1u"]
@@ -398,6 +398,9 @@ animations = [{
 "name": &"default",
 "speed": 3.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0k6b"]
+size = Vector2(254, 114)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jgbaw"]
 
@@ -959,6 +962,25 @@ position = Vector2(-686, 80)
 [node name="Mine4" parent="Ground" instance=ExtResource("20_6jx5s")]
 position = Vector2(272, -180)
 
+[node name="DragonSpawner_east" type="Area2D" parent="Ground"]
+position = Vector2(905, 190)
+collision_layer = 0
+script = ExtResource("13_gyyhl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/DragonSpawner_east"]
+position = Vector2(17, 47)
+shape = SubResource("RectangleShape2D_d0k6b")
+
+[node name="spawnpoint" type="Marker2D" parent="Ground/DragonSpawner_east"]
+position = Vector2(-226, -613)
+
+[node name="spawnwest" type="Marker2D" parent="Ground/DragonSpawner_east"]
+position = Vector2(-1980, -538)
+
+[node name="Timer" type="Timer" parent="Ground/DragonSpawner_east"]
+wait_time = 10.0
+one_shot = true
+
 [node name="OnGround" type="Node2D" parent="."]
 
 [node name="GunPickup" type="Area2D" parent="OnGround"]
@@ -1065,9 +1087,6 @@ position = Vector2(-649, -31)
 
 [node name="target_practice2" parent="OnGround" instance=ExtResource("15_58jb2")]
 position = Vector2(1127, 494)
-
-[node name="DragonHead" parent="OnGround" instance=ExtResource("21_re2kx")]
-position = Vector2(43, -70)
 
 [node name="Tank" parent="." instance=ExtResource("10_pprtn")]
 position = Vector2(-973, 72)
@@ -1225,6 +1244,7 @@ offset_bottom = 84.3336
 text = "get freeze"
 
 [connection signal="body_entered" from="Ground/Lap" to="Ground/Lap" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/DragonSpawner_east" to="Ground/DragonSpawner_east" method="_on_body_entered"]
 [connection signal="mouse_entered" from="OnGround/GunPickup" to="OnGround/GunPickup" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="OnGround/GunPickup" to="OnGround/GunPickup" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="OnGround/GunPickup2" to="OnGround/GunPickup2" method="_on_mouse_entered"]

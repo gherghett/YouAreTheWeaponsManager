@@ -60,8 +60,10 @@ radius = 3.2596
 [node name="DragonHead" type="CharacterBody2D"]
 position = Vector2(-652, 110)
 scale = Vector2(4, 4)
-collision_layer = 2
+collision_layer = 10
 collision_mask = 5
+motion_mode = 1
+platform_floor_layers = 4294901760
 script = ExtResource("1_1kd0d")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
