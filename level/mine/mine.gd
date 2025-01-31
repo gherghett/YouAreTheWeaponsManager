@@ -31,12 +31,16 @@ func explode(tank):
 func damage():
 	return 20
 	
-func destruct(_val):
-	var stack = get_stack()
-	if stack.size() > 1:
-		print("Called by:", stack[1].source)  # This gives you the script file path of the caller
-		if stack[1].source == "res://drone.gd":
-			die()
+#func destruct(_val):
+	#pass
+	#var stack = get_stack()
+	#if stack.size() > 1:
+		#print("Called by:", stack[1].source)  # This gives you the script file path of the caller
+		#if stack[1].source == "res://drone.gd":
+			#die()
+
+func clear_mine():
+	die()
 			
 func die():
 	queue_free()

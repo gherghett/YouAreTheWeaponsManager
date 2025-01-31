@@ -1101,6 +1101,8 @@ collision_mask = 7
 
 [node name="House2" parent="Smoke" instance=ExtResource("12_54uib")]
 position = Vector2(-344, 314)
+collision_layer = 4
+collision_mask = 0
 
 [node name="Dashes" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -1225,6 +1227,7 @@ pitch_scale = 1.4
 
 [node name="DebugMenu" type="CanvasLayer" parent="."]
 process_mode = 3
+visible = false
 scale = Vector2(0.3, 0.3)
 transform = Transform2D(0.3, 0, 0, 0.3, 0, 0)
 script = ExtResource("16_r6grv")

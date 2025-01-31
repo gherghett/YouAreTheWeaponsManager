@@ -18,6 +18,8 @@ func freeze(time):
 	if sprite is AnimatedSprite2D:
 		sprite_play_state_before_freezing = sprite.is_playing()
 		sprite.pause()
+	#if enemy.name == "DragonHead":
+		#print("dragon")
 	enemy_state_before_freezing = enemy.state
 	enemy.state = Refs.EnemyStates.FROZEN
 	var freeze_timer = Timer.new()

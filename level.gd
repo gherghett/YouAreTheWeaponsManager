@@ -23,7 +23,7 @@ func _ready() -> void:
 	#%UpgradeMenu.visible = false #sometimes when restarting this is an issue
 	
 func load_lap():
-	if (lap % 3 == 0) or true:
+	if (lap % 3 == 0):
 		var things_to_turn = get_tree().get_nodes_in_group("turn_into")
 		for thing in things_to_turn:
 			var pos = thing.global_position
@@ -57,7 +57,7 @@ func load_lap():
 	
 			
 	#mines
-	if(lap > 0):
+	if(lap > 1):
 		var numberofmines = 3 + int(lap * 1.5)
 		for i in range(numberofmines):
 			var mine_position = Util.get_position_along_path($Path2D, randf()) + $Path2D.position
