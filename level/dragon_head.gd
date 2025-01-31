@@ -1,11 +1,24 @@
 extends CharacterBody2D
 
+enum Becomes {
+	MINE,
+	CHERRY,
+}
+
+@export var becomes : Becomes = Becomes.MINE
+
 signal took_damage
 var hp = 30.0
 var head_direction : Refs.Direction = Refs.Direction.S
 var speed = 9200
-
-const MINE = preload("res://level/mine/mine.tscn")
+const textures_for_body = {
+	Becomes.CHERRY: preload("res://Enemies/dragon/drangon_body_red.png"),
+	Becomes.MINE : preload("res://Enemies/dragon/drangon_body.png"),
+}
+const to_become = {
+	Becomes.CHERRY: preload("res://Enemies/cherry/cherry.tscn"),
+	Becomes.MINE :preload("res://level/mine/mine.tscn"),
+}
 
 var time_passed: float = 0.0
 var movement_direction: float = 0.5  # Initial value
@@ -15,6 +28,7 @@ var length = 20
 func _ready() -> void:
 	for i in range(length):
 		var body = DRAGON_BODY.instantiate()
+		body.find_child("Sprite2D").texture = textures_for_body[becomes]
 		add_child(body)
 		
 	body_parts = get_children().filter(func(c): return c is CharacterBody2D)
@@ -23,7 +37,7 @@ func _ready() -> void:
 	print("z: ", z_index)
 	var parent = self
 	for body_part in body_parts:
-		body_part.global_position = global_position
+		body_part.global_position = global_position + Vector2(randf(), randf())
 		body_part.z_index = parent.z_index - 1
 		print(body_part.z_index)
 		parent = body_part
@@ -49,7 +63,7 @@ func _physics_process(delta: float) -> void:
 	velocity = delta * Vector2.RIGHT.rotated(movement_direction) * speed
 	move_and_slide()
 	var parent = self
-	#clear_body_parts()
+	clear_body_parts()
 	for b : CharacterBody2D in body_parts:
 		var diff = parent.global_position - b.global_position
 		var dir = diff.normalized()
@@ -58,7 +72,7 @@ func _physics_process(delta: float) -> void:
 		b.move_and_slide()
 		parent = b
 		
-func destruc(val):
+func destruct(val):
 	took_damage.emit()
 	hp -= val
 	if hp <= 0:
@@ -79,9 +93,13 @@ func clear_body_parts():
 func die():
 	clear_body_parts()
 	for b in body_parts:
-		var mine = MINE.instantiate()
-		mine.global_position = b.global_position
-		Global.main.ground.add_child(mine)
+		var become = to_become[becomes].instantiate()
+		become.global_position = b.global_position
+		if becomes == Becomes.MINE:
+			Global.main.ground.add_child(become)
+		else:
+			Global.main.on_ground.add_child(become)
+
 		b.queue_free()
 	queue_free()
 		

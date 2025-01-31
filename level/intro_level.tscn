@@ -1067,6 +1067,7 @@ position = Vector2(-649, -31)
 position = Vector2(1127, 494)
 
 [node name="DragonHead" parent="OnGround" instance=ExtResource("21_re2kx")]
+position = Vector2(43, -70)
 
 [node name="Tank" parent="." instance=ExtResource("10_pprtn")]
 position = Vector2(-973, 72)
