@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://rh7dvidhucxx"]
+
+[ext_resource type="Script" path="res://level/dragon_head.gd" id="1_1kd0d"]
+[ext_resource type="Texture2D" uid="uid://d1f0e0n47ev8o" path="res://Enemies/dragon/drangon_head.png" id="2_7i45n"]
+[ext_resource type="PackedScene" uid="uid://dt0o0yxrt0rkl" path="res://blink_on_damage.tscn" id="3_vgvr6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh00e"]
+atlas = ExtResource("2_7i45n")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlnkg"]
+atlas = ExtResource("2_7i45n")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3rfp"]
+atlas = ExtResource("2_7i45n")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f71wg"]
+atlas = ExtResource("2_7i45n")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b03tn"]
+atlas = ExtResource("2_7i45n")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_am8it"]
+atlas = ExtResource("2_7i45n")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wt2fs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh00e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlnkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3rfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f71wg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b03tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_am8it")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nakrq"]
+radius = 3.2596
+
+[node name="DragonHead" type="CharacterBody2D"]
+position = Vector2(-652, 110)
+scale = Vector2(4, 4)
+script = ExtResource("1_1kd0d")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wt2fs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nakrq")
+
+[node name="BlinkOnDamage" parent="." instance=ExtResource("3_vgvr6")]
+material_node = NodePath("../sprite")

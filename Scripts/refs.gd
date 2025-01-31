@@ -19,4 +19,15 @@ enum EnemyStates {
 	DEAD
 }
 
+enum Direction {
+	E,
+	SE,
+	S,
+	SW,
+	W,
+	NW,
+	N,
+	NE
+}
+
 signal main_ready

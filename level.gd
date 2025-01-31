@@ -11,6 +11,7 @@ const ROTATION_RATTLE_DASH = preload("res://Dash/RotationRattle/rotation_rattle_
 const XP_MANAGER = preload("res://Upgrades/XPManager.tscn")
 const HEAD = preload("res://Enemies/head/head.tscn")
 const BOX = preload("res://level/Obsticles/box.tscn")
+const MINE = preload("res://level/mine/mine.tscn")
 
 func _ready() -> void:
 	Global.level = self
@@ -43,6 +44,16 @@ func load_lap():
 				Global.main.on_ground.add_child(box)
 				while box.get_contact_count() > 0:
 					box.position.x += 20
+	
+	#mines
+	if(lap > 1):
+		var numberofmines = 3 + int(lap * 1.5)
+		for i in range(numberofmines):
+			var mine_position = Util.get_position_along_path($Path2D, randf()) + $Path2D.position
+			var mine = MINE.instantiate()
+			mine.global_position = mine_position
+			Global.main.ground.add_child(mine)
+		
 
 func _process(delta: float) -> void:
 	pass

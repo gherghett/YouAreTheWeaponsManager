@@ -47,9 +47,10 @@ func fire():
 	timer.timeout.connect(shoot_line.queue_free)
 	timer.timeout.connect(timer.queue_free)
 	
-	if has_overlapping_bodies():
+	if has_overlapping_bodies() or has_overlapping_areas():
+		var areas = get_overlapping_areas()
 		var bodies = Util.distinct(get_overlapping_bodies())
-		for body in bodies:
+		for body in bodies + areas:
 			#print("a body, ", body)
 			if body.has_method("destruct"):
 				shoot_line.points[1] = body.global_position - $Node.global_position

@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=4 uid="uid://2aj8qorfhwh8"]
+[gd_scene load_steps=86 format=4 uid="uid://2aj8qorfhwh8"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_cp067"]
 [ext_resource type="Texture2D" uid="uid://dl0sdxwadrb1a" path="res://desert.png" id="2_43o3h"]
@@ -27,6 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://di47a24f0hc4r" path="res://xp_progress_bar_progress.png" id="14_uy3es"]
 [ext_resource type="PackedScene" uid="uid://bg0sxp2n2473h" path="res://level/target_practice.tscn" id="15_58jb2"]
 [ext_resource type="Script" path="res://level/debug_menu.gd" id="16_r6grv"]
+[ext_resource type="PackedScene" uid="uid://5m0t03xcgkt1" path="res://level/mine/mine.tscn" id="20_6jx5s"]
+[ext_resource type="PackedScene" uid="uid://rh7dvidhucxx" path="res://Enemies/dragon/dragon_head.tscn" id="21_re2kx"]
 [ext_resource type="Theme" uid="uid://cxn2lc75ns7uc" path="res://main.tres" id="22_7mqbg"]
 [ext_resource type="Texture2D" uid="uid://d1xifx48fifqf" path="res://Dash/arrow.png" id="23_7ahdr"]
 [ext_resource type="Texture2D" uid="uid://b284spfrefxbg" path="res://Dash/right_button_atlas.tres" id="24_cxf1u"]
@@ -946,6 +948,17 @@ position = Vector2(8, 370)
 [node name="Boxspawnpoint6" parent="Ground" instance=ExtResource("11_n3n8h")]
 position = Vector2(125, 56)
 
+[node name="Mine3" parent="Ground" instance=ExtResource("20_6jx5s")]
+position = Vector2(526, -174)
+
+[node name="Mine" parent="Ground" instance=ExtResource("20_6jx5s")]
+
+[node name="Mine2" parent="Ground" instance=ExtResource("20_6jx5s")]
+position = Vector2(-686, 80)
+
+[node name="Mine4" parent="Ground" instance=ExtResource("20_6jx5s")]
+position = Vector2(272, -180)
+
 [node name="OnGround" type="Node2D" parent="."]
 
 [node name="GunPickup" type="Area2D" parent="OnGround"]
@@ -1052,6 +1065,8 @@ position = Vector2(-649, -31)
 
 [node name="target_practice2" parent="OnGround" instance=ExtResource("15_58jb2")]
 position = Vector2(1127, 494)
+
+[node name="DragonHead" parent="OnGround" instance=ExtResource("21_re2kx")]
 
 [node name="Tank" parent="." instance=ExtResource("10_pprtn")]
 position = Vector2(-973, 72)
