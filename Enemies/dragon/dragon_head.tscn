@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://level/dragon_head.gd" id="1_1kd0d"]
 [ext_resource type="Texture2D" uid="uid://d1f0e0n47ev8o" path="res://Enemies/dragon/drangon_head.png" id="2_7i45n"]
 [ext_resource type="PackedScene" uid="uid://dt0o0yxrt0rkl" path="res://blink_on_damage.tscn" id="3_vgvr6"]
-[ext_resource type="PackedScene" path="res://Enemies/freezable.tscn" id="4_pqjjy"]
+[ext_resource type="PackedScene" uid="uid://c41kwdyitvr7p" path="res://Enemies/freezable.tscn" id="4_pqjjy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oh00e"]
 atlas = ExtResource("2_7i45n")

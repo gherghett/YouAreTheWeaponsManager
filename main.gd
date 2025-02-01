@@ -80,6 +80,8 @@ func _on_button_pressed() -> void:
 	enter_started()
 
 func _on_restart_button_pressed() -> void:
+	Global.start()
+	pass
 	%RestartMenu.visible = false
 	var name = $level.name
 	$level.queue_free()
